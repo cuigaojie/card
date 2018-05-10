@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>我的钱包</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/my_wallet.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+</head>
+<body>
+
+<!--content 开-->
+<div class="content">
+    <!--头像信息 开-->
+    <div class="group_info wallet_info">
+     <!--   <img  class="wallet_back" src="img/back_2.png" alt=""/>-->
+        <div class="group_herder wrap">
+            <div class="group_pic">
+                <!--<img src="img/header.png" alt=""/>-->
+            </div>
+            <p class="gro_p1">
+                <span class="name"><!--小苹果--></span>
+                <span class="wx_no">微信号 ：<b><!--666666--></b></span>
+            </p>
+        </div>
+        <!--人气-->
+        <p class="gro_p2 wal_p2">可提现余额</p>
+        <p class="gro_p2 now_money  wal_p3 hid"><!--￥150--></p>
+    </div>
+    <!--头像信息 结-->
+    <!--数量 开-->
+    <div class="group_num wal_num">
+        <p class="gro_num_1 wal_num_1">
+            <span class="hid all_money">￥300</span>
+            <span class="hid">总收入</span>
+        </p>
+        <p class="gro_line wal_line"></p>
+        <p class="gro_num_1 wal_num_1">
+            <span class="hid go_money">￥300</span>
+            <span class="hid ">已提现</span>
+        </p>
+    </div>
+    <!--数量 结-->
+    <!--列表 开-->
+    <ul class="my_list">
+        <li class="">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/m_9.png" alt=""/>
+                    <p>提现记录</p>
+                </div>
+                <div class="my_ri">
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <!--列表 结-->
+    <!--按钮-->
+    <div class="wal_btn">申请提现</div>
+</div>
+<!--content 结-->
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax(); // 请求
+                this.jump(); //跳转
+            },
+            // 请求
+            ajax:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/User/my_money',
+                    dataType:'json',
+                    data:{
+                        token: token
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            $('.group_pic').prepend('<img src="'+data.body.header_pic+'" alt=""/>'); // 头像
+                            $('.name').text(data.body.nickname); // 昵称
+                            $('.wx_no b').text(data.body.wx_no); // 微信号
+
+                            var obj_num = JSON.parse(sessionStorage.getItem('obj_num')) ; //  对象
+                            if(obj_num ){
+                                $('.now_money').text('￥'+obj_num.use_price); //余额
+                                $('.all_money').text('￥'+obj_num.total_price); //余额
+                                $('.go_money').text('￥'+obj_num.tx_price); //余额
+                            }else{
+                                $('.now_money').text('￥'+data.body.use_price); //余额
+                                $('.all_money').text('￥'+data.body.total_price); // 全部
+                                $('.go_money').text('￥'+data.body.tx_price); // 已经提现
+                            }
+
+                        }else{
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错1') ;
+                       // alert('服务器打盹了，请刷新');
+                    }
+                });
+            },
+            //跳转
+            jump: function () {
+                // 提现记录
+                $('.my_list li').eq(0).click(function(){
+                    window.location.href  = 'out_wallet_list.html?token='+token ;
+                });
+                // 申请提现
+                $('.wal_btn').click(function(){
+                    window.location.href  = 'out_wallet.html?token='+token ;
+                });
+                // 返回
+                $('.wallet_back').click(function(){
+                    window.location.href  = 'my.html?token='+token ;
+                });
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>我的</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/my.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+</head>
+<body>
+
+<!--content 开-->
+<div class="content">
+    <!--头像信息 开-->
+    <div class="my_info">
+        <img class="inf_bei" src="img/bei_sb.jpg" alt=""/>
+        <div class="info">
+            <div class="header">
+               <!-- <img src="img/header.png" alt=""/>-->
+            </div>
+            <p class="name"><!--哈哈哈哈--></p>
+            <p class="work_no"></span></p>
+        </div>
+    </div>
+    <!--头像信息 结-->
+    <!--列表 开-->
+    <ul class="my_list">
+        <li class="group">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/m_1.png" alt=""/>
+                    <p>我的粉丝团队</p>
+                </div>
+                <div class="my_ri">
+                    <p class="people">我已经推荐<b><!--12--></b>人</p>
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>
+        <li class="success">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/m_2.png" alt=""/>
+                    <p>推荐成功明细</p>
+                </div>
+                <div class="my_ri">
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>
+        <li class="ranking">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/m_3.png" alt=""/>
+                    <p>名人排行榜</p>
+                </div>
+                <div class="my_ri">
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>
+        <li class="wallet">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/m_4.png" alt=""/>
+                    <p>我的钱包</p>
+                </div>
+                <div class="my_ri">
+                    <p class="money">余额：￥<b><!--365--></b></p>
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>
+        <li class="order">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/m_5.png" alt=""/>
+                    <p>我的订单</p>
+                </div>
+                <div class="my_ri">
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>
+        <li class="letter">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/m_6.png" alt=""/>
+                    <p>我的公告</p>
+                </div>
+                <div class="my_ri">
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>
+        <li class="us">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/m_7.png" alt=""/>
+                    <p>关于我们</p>
+                </div>
+                <div class="my_ri">
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>
+        <li class="platform">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/m_8.png" alt=""/>
+                    <p>我要推荐</p>
+                </div>
+                <div class="my_ri">
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>
+       <!-- <li class="pay">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/m_4.png" alt=""/>
+                    <p>绑定支付宝</p>
+                </div>
+                <div class="my_ri">
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>-->
+         <li class="safe">
+            <div class="wrap">
+                <div class="my_le">
+                    <img src="img/sad.png" alt=""/>
+                    <p>车险总监</p>
+                </div>
+                <div class="my_ri">
+                    <img src="img/jian.png" alt=""/>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <!--列表 结-->
+</div>
+<!--content 结-->
+<div class="bottom">
+    <ul class="bot_list">
+        <li>
+            <img src="img/b_11.png" alt=""/>
+            <p>信用卡</p>
+        </li>
+        <li>
+            <img src="img/b_22.png" alt=""/>
+            <p>分享攻略</p>
+        </li>
+        <li>
+            <img src="img/che_3.png" alt=""/>
+            <p>车险</p>
+        </li>
+
+        <li class="li_on">
+            <img src="img/b_3.png" alt=""/>
+            <p>个人中心</p>
+        </li>
+    </ul>
+</div>
+<!--bottom 结-->
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token') ;
+    var bankid = '1'  ; //传  死值
+    var diff = '1'  ; //传 死值
+    var type = ''  ; //传空
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax(); // 请求
+                this.jump();   // 跳转
+            },
+            // 请求
+            ajax:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/User/my',
+                    dataType:'json',
+                    data:{
+                        token: token
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            $('.header').append(' <img src="'+data.body.header_pic+'" alt=""/>'); // 头像
+                            $('.name').text(data.body.nickname) ; // 昵称
+                            $('.work_no').text('工号：'+data.body.work_no) ; // 工号
+                            $('.money b').text(data.body.use_price) ; // 余额
+
+                            var obj_num = JSON.parse(sessionStorage.getItem('obj_num')) ; //  对象
+                            var total_num = sessionStorage.getItem('total_num') ; // 总粉丝
+
+                            console.log(total_num)
+                            if(obj_num ){
+                                $('.money b').text(obj_num.use_price) ; // 余额
+                            }else{
+                                $('.money b').text(data.body.use_price) ; // 余额
+                            }
+
+                            if(total_num ){
+                                $('.people b').text(total_num) ; // 推荐人数  缓存的
+                            }else{
+                                $('.people b').text(data.body.num) ; // 推荐人数
+                            }
+
+                        }else{
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                        }
+
+                    },
+                    error:function (errordata) {
+                        //alert('请求出错');
+                    }
+                });
+            },
+            // 跳转
+            jump:function(){
+                // 团队
+                $('.group').click(function(){
+                    window.location.href  = 'my_group.html?token='+token ;
+                });
+                // 成功列表
+                $('.success').click(function(){
+                    window.location.href  = 'my_success_list.html?token='+token ;
+                });
+                // 排行旁
+                $('.ranking').click(function(){
+                    window.location.href  = 'my_ranking.html?token='+token ;
+                });
+                // 钱包
+                $('.wallet').click(function(){
+                    window.location.href  = 'my_wallet.html?token='+token ;
+                });
+                // 订单
+                $('.order').click(function(){
+                    window.location.href  = 'my_order.html?token='+token ;
+                });
+                // 私信
+                $('.letter').click(function(){
+
+                    window.location.href  = 'my_notice.html?token='+token ;
+                   // WeixinJSBridge.call('closeWindow');
+                });
+                // 关于我们
+                $('.us').click(function(){
+                    window.location.href  = 'about_us.html?token='+token ;
+                });
+                // 平台邀请
+                $('.platform').click(function(){
+                    $.ajax({
+                        type:'post',
+                        url: ulr_common+'mobile/Bank/apply_card',
+                        dataType:'json',
+                        data:{
+                            token: token ,
+                            bankid: bankid ,
+                            diff: diff , // 首页1  分类2
+                            type: 2 //1立即办卡2我要推荐
+                        },
+                        success:function (data) {
+                            console.log(data);
+                            if(data.code == 200){
+                                if(data.body.length == 0){
+                                    window.location.href  = 'recommend_input.html?token='+token+'&bankid='+bankid+'&diff='+diff ;
+                                }else{
+                                    window.location.href  = 'poster_2.html?token='+token+'&bankid='+bankid+'&diff='+diff ;
+                                   // window.location.href  = 'poster_recommend.html?token='+token+'&platform=platform' ;  //显示隐藏基本信息的参数
+                                }
+                            }else{
+                                layer.open({
+                                    content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                                });
+                            }
+
+                        },
+                        error:function (errordata) {
+                            //alert('请求出错');
+                        }
+                    });
+
+                });
+              /*  // 绑定支付宝
+                $('.pay').click(function(){
+                    window.location.href  = 'bound_pay.html?token='+token ;
+                });*/
+                // 车险总监
+                $('.safe').click(function(){
+                    window.location.href  = 'apply.html?token='+token ;
+                });
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>卡种</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/card.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+
+</head>
+<body>
+<!--top 开-->
+<div class="top">
+    <ul class="top_btn">
+        <li class="top_on"><p class="hid "><!--大额卡--></p></li>
+        <li><p class="hid"><!--车主卡--></p></li>
+        <li><p class="hid"><!--女性卡--></p></li>
+        <li><p class="hid"><!--更多卡种--></p></li>
+    </ul>
+</div>
+<!--top 结-->
+<!--content 开-->
+<div class="content_2">
+    <ul class="cla_list ">
+       <!-- <li>
+            <div class="cla_le">
+                <img src="img/s_1.jpg" alt=""/>
+            </div>
+            <div class="cla_ri">
+                <p class="cla_p1 hid"> 中国银行大额卡</p>
+                <p class="cla_p2 ">足不出户享受7x24小时安全、优惠丰富、便捷的金融服务，从中银网上银行开始</p>
+                <div class="cla_p3">
+                    <div class="cla_info">
+                        <div class="cla_money">
+                            <b>佣金：99</b>
+                            <img src="img/ic_5.jpg" alt=""/>
+                        </div>
+                        <p class="cla_time">2018.2.6  10:23</p>
+                    </div>
+                    <p class="cla_btn">点击办卡</p>
+                </div>
+            </div>
+        </li>-->
+    </ul>
+</div>
+<!--content 结-->
+<!--蒙版-->
+<div class="mask_1 close_all"></div>
+<!--弹框 开-->
+<div class="pup_1">
+    <div class="close close_all">
+        <img  src="img/cha.png" alt=""/>
+    </div>
+    <div class="pup_num">
+        <p>
+            <span class="hid">人脉</span>
+            <span class="hid">直属</span>
+            <span class="hid">亲身</span>
+        </p>
+        <p>
+            <span class="hid pup_money_1"><!--48--></span>
+            <span class="hid pup_money_2"><!--48--></span>
+            <span class="hid pup_money_3"><!--48--></span>
+        </p>
+    </div>
+    <div class="pup_word">
+        <p class="pup_p1">结算周期：每个月的最后5个工作日结算可提现上个月的结算时间</p>
+        <p class="pup_p2">结算规则：如果在最后的5个工作日，没有申请提现，之后的时间里仍然随时可以提现</p>
+    </div>
+</div>
+<!--弹框 结-->
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token') ;
+    var id = getUrl('id') ;
+    var diff = getUrl('diff') ; //1首页进来时传，2从卡种
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.btn_who();    // 判断点击的哪一项
+                this.ajax_2();   // 分类请求
+                this.ajax();   // 列表请求
+            },
+            // 判断从首页点击的哪一项
+            btn_who:function(){
+                $('.top_btn li').eq(id-1).addClass('top_on');
+                $('.top_btn li').eq(id-1).siblings().removeClass('top_on');
+            },
+            // 分类请求
+            ajax_2:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/Bank/index',
+                    dataType:'json',
+                    data:{
+                        token: token
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            // 分类
+                            Fun().classify(data.body.credit_type);
+                        }else{
+                            alert('请求出错');
+                        }
+
+                    },
+                    error:function (errordata) {
+                       // alert('请求出错');
+                    }
+                });
+            },
+            // 列表请求
+            ajax:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/Bank/card_list',
+                    dataType:'json',
+                    data:{
+                        token: token ,
+                        id: id
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            // 轮播展示
+                            Fun().show(data.body);
+
+
+                        }else{
+                            console.log('请求出错204') ;
+                            //alert('请求出错');
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错1') ;
+                        //alert('请求出错');
+                    }
+                });
+            },
+            // 分类
+            classify:function(data){
+                $('.top_btn li').each(function(i){
+                    $(this).find('p').text(data[i].credit_type) ;
+                    $(this).attr('id',data[i].id) ;
+                });
+                //点击切换 请求
+                Fun().tab();
+
+            },
+            // 列表展示
+            show: function (data) {
+                $('.cla_list').empty(); // 清空之前的数据
+                $(data).each(function(i){
+                    $('.cla_list').append(' <li id="'+data[i].cid+'"> <div class="cla_le go_same"> ' +
+                    '<img  src="'+data[i].imgid+'" alt=""/> ' +
+                    '</div> ' +
+                    '<div class="cla_ri"> ' +
+                    '<div class="go_same"> ' +
+                    '<p class="cla_p1 hid"> '+data[i].name+'</p> ' +
+                    '<p class="cla_p2 ">'+data[i].brief+'</p> ' +
+                    '</div> ' +
+                    '<div class="cla_p3"> ' +
+                    '<div class="cla_info"> <div class="cla_money">' +
+                    ' <b>佣金：'+data[i].fan_money+'</b>' +
+                    ' <img src="img/ic_5.jpg" alt=""/> </div> ' +
+                    '<p class="cla_time">'+data[i].createdtime+'</p> ' +
+                    '</div> <p class="cla_btn">点击办卡</p> </div> </div> ' +
+                    '</li>');
+                });
+                // 点击出现弹框
+                Fun().pup();
+                // 跳转
+                Fun().jump();
+            },
+            //佣金奖励的请求
+            monwy_ajax:function(id){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/bank/rzq',
+                    dataType:'json',
+                    data:{
+                        token: token ,
+                        id : id ,
+                        diff :2
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+
+                            $('.pup_money_1').text(data.body.second_money) ; // 人脉
+                            $('.pup_money_2').text(data.body.first_money) ; // 直属
+                            $('.pup_money_3').text(data.body.my_money) ;  // 亲身
+
+                        }else{
+                            alert('请求出错');
+                        }
+
+                    },
+                    error:function (errordata) {
+                        alert('请求出错');
+                    }
+                });
+            },
+            // 出现or关闭  弹框
+            pup:function(){
+                // 出现 弹框
+                $('.cla_money').click(function(){
+                    $('.pup_1').addClass('show_all');
+                    $('.mask_1').addClass('show_all');
+                    $('body ,html').css('overflow','hidden') ;
+
+                    var id = $(this).parents('li').attr('id');
+                    console.log(id);
+                    Fun().monwy_ajax(id);
+
+
+                });
+                // 关闭弹框
+                $('.close_all').click(function(){
+                    $('.pup_1').removeClass('show_all');
+                    $('.mask_1').removeClass('show_all');
+                    $('body ,html').css('overflow','auto')
+                })
+
+            },
+            // 切换
+            tab: function () {
+                $('.top_btn li').click(function(){
+
+                     id = $(this).attr('id');
+
+                    if($(this).hasClass('top_on')){
+                        return false
+                    }else{
+                        $(this).addClass('top_on') ;
+                        $(this).siblings().removeClass('top_on') ;
+                        //  调用 列表展示函数展示
+                        Fun().ajax();
+                    }
+                })
+            },
+            // 跳转
+            jump:function(){
+                // 立即办卡
+                $('.cla_btn').click(function(){
+                    var bankid = $(this).parents('li').attr('id');
+                   // console.log(bankid) ;
+                    window.location.href  = 'run_card.html?token='+token+'&diff='+diff+'&bankid='+bankid ;
+                });
+                // 去 信用卡海报页面
+                $('.go_same').click(function(){
+                    var bankid = $(this).parents('li').attr('id');
+                    console.log(bankid) ;
+                    window.location.href  = 'poster_card.html?token='+token+'&diff='+diff+'&id='+bankid ;
+                });
+            }
+        }
+    }
+</script>
+</html>

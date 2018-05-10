@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>平台邀请海报</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/card.css"/>
+    <style>
+       html,body{background-color: #ffefef;}
+    </style>
+</head>
+<body>
+<!--content 开-->
+<div class="content">
+    <!--介绍海报-->
+    <div class="plat_pic">
+        <img src="img/big_1.jpg" alt=""/>
+    </div>
+    <p class="plat_p1 wrap">立即扫码 免费代理 高额佣金</p>
+    <div class="plat_info wrap">
+        <div class="plat_le">
+            <p>· 网申请用卡</p>
+            <p>· 纯信用贷款</p>
+            <p>· 展业海报</p>
+            <p>· 征信海报</p>
+        </div>
+        <div class="plat_ri">
+            <img class="plat_ma" src="img/ma_2.jpg" alt=""/>
+            <img src="img/p_1.png" alt=""/>
+        </div>
+    </div>
+    <div class="user_info wrap">
+        <div class="header">
+            <img src="img/header.png" alt=""/>
+        </div>
+        <div class="user_wen">
+            <p>小苹果</p>
+            <p>微信号：13467895</p>
+            <img src="img/p_2.png" alt=""/>
+        </div>
+    </div>
+</div>
+<!--content 结-->
+</body>
+
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.swiper(); // 轮播
+            },
+            // 轮播
+            swiper:function(){
+                /*$(data).each(function(i){
+                    $('.swiper-wrapper').append('  <div class="swiper-slide "> ' +
+                    '<img src='+data[i].banner_img+' alt=""/> ' +
+                    '</div>');
+                });*/
+                var swiper2 = new Swiper('#swiper-container1', {
+                   // autoplay: 3000, //自动切换的时间间隔
+                    pagination : '.swiper-pagination',
+                    speed:2000, //滑动速度，即slider自动滑动开始到结束的时间
+                    loop:true,
+                    autoplayDisableOnInteraction:false
+                });
+            }
+        }
+    }
+</script>
+</html>

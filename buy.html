@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>怎么买车险</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/insurance.css"/>
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+    .news{padding-bottom: 0;} 
+   .small_tit h3{width:4.8rem;}
+   .question .title_pay h3{width: 3rem;}
+    </style>
+<body>
+<div class="content">
+	<div class="title_pay small_tit">
+    	<h3>手机买车险 保单寄到家</h3>
+    </div>
+    <div class="flow_pay flow_buy">   	
+    	<ul class="">
+    		<li><img src="img/tjrz.png" alt="" /><p>提交信息</p></li>
+			<li><img src="img/jtright.png" alt="" /></li>
+    		<li><img src="img/fxa.png" alt="" /><p>获取报价</p></li>
+    		<li><img src="img/jtright.png" alt="" /></li>	
+    		<li><img src="img/pays.png" alt="" /><p>支付订单<p></li>
+    		<li><img src="img/jtright.png" alt="" /></li>
+    		<li><img src="img/mail.png" alt="" /><p>保单邮寄</p></li>
+    	</ul>
+    </div>
+    <div class="title_pay small_tit">
+    	<h3>选险种 哪里不懂点哪里</h3>
+    </div>
+    <ul class="type safe_type1">
+    	<!--<li>-->
+    		<!--<div class='safe_img fl'><img src='img/safe1.png' alt='' /></div>-->
+    		<!--<div class='safe_desc fl'>-->
+    			<!--<h2>车辆损失险 <b>95%的车主投保</b></h2>-->
+    			<!--<p><span>赔偿范围</span><b>赔偿因为碰撞或意为碰撞或意为碰撞或意外导致自己车辆受损的情况</b></p>-->
+    			<!--<p><span>适用人群</span><b>所有车主</b></p>-->
+    		<!--</div>-->
+    	<!--</li>-->
+    </ul>
+   <div class="safe_type">
+	   	<ul class="type safe_type2">
+			<!--<li><div><img src="img/safe5.png" alt="" /><p>司机责任险</p></div></li>-->
+		
+		</ul>
+		<div class="contair_safe">			
+			<!--<div class='safe_desc  safe_info' >
+				<h2>车辆损失险 <b>95%的车主投保</b></h2>
+    			<p><span>赔偿范围</span><b>赔偿因为碰撞或意外导致自己车辆受损的情况</b></p>
+    			<p><span>适用人群</span><b>所有车主</b></p>
+			</div>
+		-->
+		</div>
+   </div> 
+	<div class="consult">
+		<img src="img/cds.png" alt="" />
+		<div class="fl">
+			<h1>51互信管家</h1>
+			<p class="btn_order zixun">在线咨询</p>
+			<p class="btn_order baojia">人工报价</p>
+		</div>
+	</div>
+	<div class="line_safe"></div>
+	
+    <ul class="question">
+    	<li class="title_pay">
+	    	<h3>常见问题</h3>   	
+	    </li>
+    	<!--<li>
+    		<h1>2、车险能够提供哪些险种报价？</h1>
+	    	<p>您目前可以在车险选择交强险、车船税和所有商业险，由保险公司直接承保</p>
+    	</li>	-->
+	    	
+    </ul>
+</div>
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+
+
+<script src="js/swiper.min.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+	
+
+    var token = getUrl('token') 
+    $(function(){
+        Fun().init();    
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+            this.sow_hid();
+            this.ajax();
+            this.question();
+            this.jump();
+            },
+            ajax:function(){
+            	 $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/Carsafe/carsafe_type',
+                    dataType:'json',
+                    data:{token: token},
+                    success:function(data){
+                    	if(data.code == 200){
+//                  		console.log(data.body);
+                    		Fun().safe_type(data);
+                    		
+                    	}else{
+                    		 layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                    	}
+                    },error:function(){
+                    	console.log('请求出错,没有数据显示') ;
+                    }
+                })
+                    	
+            },
+            sow_hid:function(){
+                $(".safe_type2").each(function(i){
+                    $(".safe_type2").on("click","li",function(){
+                    	console.log(123);    
+                    	var i=$(this).index();
+                    	if(i<3){
+                    		$(".safe_type2 li").eq(0).attr('data_des','inf');
+                    		$(".safe_type2 li").eq(1).attr('data_des','inf')
+                    		$(".safe_type2 li").eq(2).attr('data_des','inf')
+                    	}else{
+                    		$(".safe_type2 li").eq(0).attr('data_des','');
+                    		$(".safe_type2 li").eq(1).attr('data_des','')
+                    		$(".safe_type2 li").eq(2).attr('data_des','')
+                    	}
+                        $(".safe_info").eq(i).show().siblings().hide()
+                    })
+				})
+
+            },
+           safe_type:function(data){
+           		$(data.body).each(function(i,o){
+            		if(i<3){
+            		$(".safe_type1").append("<li><div class='safe_img fl'><img src="+data.body[i].img+" alt='' /></div>" +
+                        "<div class='safe_desc fl'><h2>"+data.body[i].name+" <b>"+data.body[i].per+"</b></h2><p><span>赔偿范围</span>" +
+						"<b>"+data.body[i].range+"</b></p><p><span>适用人群</span><b>"+data.body[i].crowd+"</b></p></div></li>");
+            		}else{
+            		    $(".safe_type2").append("<li><div><img src="+data.body[i].img+" alt='' /><p class='hid'>"+data.body[i].name+"</p></div></li>");
+                    $('.contair_safe').append("<div class='safe_desc  safe_info' ><h2>"+data.body[i].name+" <b>"+data.body[i].per+"</b>" +
+						"</h2> <p><span>赔偿范围</span><b>"+data.body[i].range+"</b></p><p><span>适用人群</span><b>"+data.body[i].crowd+"</b></p></div>")
+
+                    }
+            	})
+           },
+           question:function(){
+           	$.ajax({
+           		type:'get',
+                url: ulr_common+'mobile/Carsafe/question',
+                dataType:'json',
+                data:{token: token},
+                success:function(data){
+                	if(data.code == 200){
+                     $(data.body).each(function(i,o){
+                     	console.log(data.body)
+						$(".question").append("<li><h1>"+data.body[i].id+'、'+data.body[i].title+"</h1><p>"+data.body[i].content+"</p></li>")
+					})
+                		
+                	}else{
+                		 layer.open({
+                            content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                	}
+                },error:function(){
+                	console.log('请求出错,没有数据显示') ;
+                }
+           	})
+                     	
+           },
+           jump:function(){   
+           	$(".zixun").click(function(){
+				   WeixinJSBridge.call('closeWindow');
+				//        第二种
+				// wx.closeWindow();
+				//		第三种
+				// WeixinJSBridge.invoke('closeWindow',{},function(res){
+				//     alert(res.err_msg);
+				//    });
+			})
+		   $(".baojia").click(function(){
+			   window.location.href="info.html?token="+token
+		   })
+           }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>办卡攻略</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/card.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+        .content{margin-bottom: 50px;}
+        .bottom{height: 50px;}
+        .bot_btn_2{font-size: 20px;height: 100px;line-height: 50px;}
+        img{display:  initial;}
+        .wrap{width: 90%;margin: auto;}
+    </style>
+</head>
+<body>
+
+<!--content 开-->
+<div class="content">
+    <div class="word_pic">
+       <!-- <img src="img/big_2.jpg" alt=""/>-->
+    </div>
+    <div class="word_box wrap">
+       <!-- <p class="word_ti">一. 办卡的条件</p>
+        <p class="word_wen">年龄:16周岁以下的带户口薄及</p>
+        <p class="word_ti">一. 办卡的条件</p>-->
+    </div>
+</div>
+<!--content 结-->
+<!--bottom 开-->
+<div class="bottom">
+    <p class="bot_btn_2">进入公众号</p>
+</div>
+<!--bottom 结-->
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common_pro.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+    var token = getUrl('token') ;
+    var csid = getUrl('csid') ; //列表id
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax(); // 请求
+                this.jump(); // 跳转
+            },
+            // 请求
+            ajax:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/Strategy/detail',
+                    dataType:'json',
+                    data:{
+                        token: token ,
+                        csid: csid
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            $('.word_pic').append(' <img src="'+data.body.pic+'" alt=""/>');
+                            $('.word_box').append(data.body.info);
+
+
+                        }else{
+                            console.log('请求出错204') ;
+                            //alert('请求出错');
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错1') ;
+                        //alert('请求出错');
+                    }
+                });
+            },
+            // 跳转
+            jump:function(){
+                // 调转 信用卡海报页面
+                $('.bot_btn_2').click(function(){
+                    var id = $(this).attr('id');
+                    window.location.href  = 'index.html?token='+token ;
+                });
+            }
+        }
+    }
+</script>
+</html>

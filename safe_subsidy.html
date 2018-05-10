@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>推荐成功明细</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/my.css"/>
+    <link rel="stylesheet" href="css/insurance.css" />
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+        body,html{background-color: #f6f1ed;}
+    </style>
+</head>
+<body>
+<!--top 开-->
+<div class="tab_success">
+	<ul class="tab_add">
+		<li><img src="img/ass1.png" alt="" /><p>信用卡补贴</p></li>
+		<li class="li_on"><img src="img/ass22.png" alt="" /><p>车险补贴</p></li>
+	</ul>
+</div>
+
+<ul class="tab_sub">
+	<li class="li_active"><span>自购补贴</span></li>
+	<li><span>直系购险</span></li>
+	<li><span>人脉购险</span></li>
+	<li><span>培训补贴</span><b>(特约)</b></li>
+</ul>
+<div class="all_list">
+	<div class="content_list">
+		<ul class="sub_list list1">
+			<!--<li>-->
+				<!--<div>-->
+					<!--<img src="img/geren@2x.png" alt="" />-->
+					<!--<p>购险人 ：<b>XXXXXX</b></p>-->
+				<!--</div>-->
+				<!--<div>-->
+					<!--<img src="img/je@2x.png" alt="" />-->
+					<!--<p>支付金额：<b>XXXXXX</b></p>-->
+				<!--</div>-->
+				<!--<div>-->
+					<!--<img src="img/gs@2x.png" alt="" />-->
+					<!--<p>保险公司：<b>XXX！</b></p>-->
+				<!--</div>-->
+				<!--<div>-->
+					<!--<img src="img/qudaoi .png" alt="" />-->
+					<!--<p>车险补贴：<b>99.99</b></p>-->
+				<!--</div>-->
+				<!--<div>-->
+					<!--<img src="img/ds.png" alt="" />-->
+					<!--<p>车牌号：<b>豫A33333</b></p>-->
+				<!--</div>-->
+			<!--</li>-->
+			
+		</ul>
+		
+	</div>
+	<div class="content_list" style="display: none;">
+		<ul class="sub_list list2">
+		<!--<li>-->
+			<!--<div>-->
+				<!--<img src="img/geren.png" alt="" />-->
+				<!--<p>购险人 ：XXXXXX</p>-->
+			<!--</div>-->
+			<!--<div>-->
+				<!--<img src="img/recom.png" alt="" />-->
+				<!--<p>推荐人： XXX！</p>-->
+			<!--</div>-->
+			<!--<div>-->
+				<!--<img src="img/quidao.png" alt="" />-->
+				<!--<p>支付金额：XXXXXX</p>-->
+			<!--</div>-->
+			<!--<div>-->
+				<!--<img src="img/factory.png" alt="" />-->
+				<!--<p>保险公司：XXX！</p>-->
+			<!--</div>-->
+			<!--<div>-->
+				<!--<img src="img/money.png" alt="" />-->
+				<!--<p>分享佣金：99.99</p>-->
+			<!--</div>-->
+		<!--</li>-->
+	
+	</ul>
+	
+	</div>
+	<div class="content_list" style="display: none;">
+		<ul class="sub_list list3">
+		<!--<li>-->
+			<!--<div><img src="img/geren.png" alt="" /><p>购险人 ：<b>XXXXXX</b></p></div>-->
+			<!--<div><img src="img/quidao.png" alt="" /><p>支付金额：<b>XXXXXX</b></p></div>-->
+			<!--<div><img src="img/recom.png" alt="" /><p>推荐人： XXX！</p></div>-->
+			<!--<div><img src="img/factory.png" alt="" /><p>保险公司：<b>XXX！</b></p></div>-->
+			<!--<div><img src="img/money.png" alt="" /><p>分享佣金：<b>99.99</b></p></div>-->
+		<!--</li>-->
+
+	</ul>
+	
+	</div>
+	<div class="content_list"  style="display: none;">
+		<ul class="sub_list list4">
+			<!--<li>-->
+				<!--<div>-->
+					<!--<img src="img/daishz.png" alt="" />-->
+					<!--<p>1期培训补贴金额：XXXXXX</p>-->
+				<!--</div>-->
+				<!--<div>-->
+					<!--<img src="img/love.png" alt="" />-->
+					<!--<p>继续发扬您的奉献精神吧！</p>-->
+				<!--</div>-->
+			<!--</li>-->
+
+		</ul>
+		
+	</div>
+</div>
+
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+    var token = getUrl('token') ;
+    $(function(){
+        Fun().init();
+        
+    });
+
+    var Fun = function() {
+        return {
+            init: function () {
+                this.jump()//页面跳转
+                this.tab();
+                this.ajax();
+            },
+      		ajax:function(){
+      			$.ajax({
+      				 type: 'get',
+                    url: ulr_common + 'mobile/Carsafe/subside_list',
+                    dataType: 'json',
+                    data: {
+                        token: token,
+                    },
+                    success:function(data){
+                    	if(data.code==200){
+                    		console.log(data)
+                    		Fun().user_infos(data.body);//自购补贴
+                            Fun().renmai_infos(data.body);//人脉购险
+                            Fun().zhigou_infos(data.body);//直系购险
+
+                    	}else{
+                    		layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                    	}
+                    	
+                    },
+                    error: function (errordata) {
+                        console.log('请求出错1') ;
+                       // alert('请求出错');
+                    }
+      			})
+      			
+      		},
+            jump:function(){           	
+        		$(".tab_add li").eq(0).click(function(){
+        			window.location.href='my_success_list.html?token='+token;
+        		})       	           	
+            },
+            tab:function(){
+            	$(".tab_sub li").each(function(i){
+            		$(".tab_sub li").eq(i).click(function(){
+            			$(this).addClass("li_active").siblings("li").removeClass("li_active");
+            			$(".all_list .content_list").eq(i).show().siblings().hide()
+            		})
+            	})
+            },
+            user_infos:function(data){
+                if(data.user_infos==null){
+                    $(".list1").html('<p class="none">暂无数据</p>')
+				}else{
+                    $.each(data.user_infos,function(i,o){
+                        $(".list1").append('<li><div class="items"><img src="img/geren@2x.png" alt="" /><p>购险人 ：<b>'+data.user_infos[i].b_name+
+                            '</b></p></div><div class="items"><img src="img/je@2x.png" alt="" /><p>支付金额：<b>'+data.user_infos[i].pay_money+'</b></p>' +
+                            '</div><div class="items"><img src="img/gs@2x.png" alt="" /><p>保险公司：<b>'+data.user_infos[i].carsafe_name+'</b></p></div><div class="items">' +
+                            '<img src="img/qudaoi .png" alt="" /><p>车险补贴：<b>'+data.user_infos[i].money+'</b></p></div>' +
+                            '<div class="items"><img src="img/ds.png" alt="" /><p>车牌号：<b>'+data.user_infos[i].car_licence+'</b></p>' +
+                            '</div></li>')
+                    })
+				}
+
+            },
+            zhigou_infos:function(data){
+                if(data.zhigou_infos==null){
+                    $(".list2").html('<p class="none">暂无数据</p>')
+                }else{
+                    $.each(data.zhigou_infos,function(i,o){
+                        $(".list2").append('<li><div class="items"><img src="img/geren.png" alt="" /><p>购险人 ：'+data.zhigou_infos[i].b_name+
+                            '</p></div><div class="items"><img src="img/recom.png" alt="" /><p>推荐人：'+data.zhigou_infos[i].name+'</p></div>' +
+                            '<div class="items"><img src="img/quidao.png" alt="" /><p>支付金额：'+data.zhigou_infos[i].pay_money+'</p></div><div class="items">' +
+                            '<img src="img/factory.png" alt="" /><p>保险公司：'+data.zhigou_infos[i].carsafe_name+'</p></div><div class="items">' +
+                            '<img src="img/money.png" alt="" /><p>分享佣金：'+data.zhigou_infos[i].money+'</p></div></li>')
+//                        console.log(data.zhigou_infos)
+                    })
+				}
+
+            },
+            renmai_infos:function(data){
+                if(data.renmai_infos==null){
+                    $(".list3").html('<p class="none">暂无数据</p>')
+				}else{
+					$.each(data.renmai_infos,function(i){
+//					    console.log(data.renmai_infos)
+					    $(".list3").append('<li><div class="items"><img src="img/geren.png" alt="" /><p>购险人 ：<b>'+data.renmai_infos[i].b_name+'</b></p></div>' +
+                            '<div class="items"><img src="img/quidao.png" alt="" /><p>支付金额：<b>'+data.renmai_infos[i].pay_money+'</b></p></div>' +
+                            '<div class="items"><img src="img/recom.png" alt="" /><p>推荐人： '+data.renmai_infos[i].name+'</p></div>' +
+                            '<div class="items"><img src="img/factory.png" alt="" /><p>保险公司：<b>'+data.renmai_infos[i].carsafe_name+'</b></p></div>' +
+                            '<div class="items"><img src="img/money.png" alt="" /><p>分享佣金：<b>'+data.renmai_infos[i].money+'</b></p></div></li>')
+					})
+				}
+			}
+        
+        
+        }
+    }
+</script>
+</html>

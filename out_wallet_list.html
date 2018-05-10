@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>提现记录</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/my_wallet.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+</head>
+<body>
+
+<!--content 开-->
+<div class="content">
+    <ul class="record">
+        <!--<li> `
+           <div class="wrap">
+               <p><span>佣金提现</span><b>金额：￥150</b></p>
+               <p><b>2018.02.07</b><b>体现成功</b></p>
+           </div>
+        </li>-->
+    </ul>
+</div>
+<!--content 结-->
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+    var token = getUrl('token') ;
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax(); // 请求
+            },
+            // 请求
+            ajax:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/bank/tx_record',
+                    dataType:'json',
+                    data:{
+                        token: token
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            // 列表
+                            Fun().show(data.body);
+
+                        }else{
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错1') ;
+                        //alert('服务器不在状态');
+                    }
+                });
+            },
+            //列表
+            show:function(data){
+                $(data).each(function(i){
+                    $('.record').append('<li> <div class="wrap">' +
+                    '<p><span>'+data[i].tx+'</span><b>金额：￥'+data[i].change_price+'</b></p> ' +
+                    '<p><b>'+data[i].paytime+'</b><b>'+data[i].sign+'</b></p> ' +
+                    '</div> </li>');
+                });
+
+            }
+        }
+    }
+</script>
+</html>

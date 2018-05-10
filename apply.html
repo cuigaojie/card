@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>申请车险总监</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/insurance.css"/>
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+        .news{padding-bottom: 0;}
+	    .apply h1{padding:0.2rem 0;}
+		.apply .con_dec{font-size:.28rem;padding:.2rem .3rem 0 .3rem;text-indent: 2em}
+		.apply{margin:0.4rem auto 0;}
+		.apply>span{
+			padding-left:.3rem;
+			font-size:.34rem;}
+		.cont_condition p{
+			font-size:.25rem;padding-left: .1rem;}
+    </style>
+<body>
+<div class="content">
+	<div class="banner_info">
+		
+	</div>
+	<div class="apply">
+		<h1>车险总监招募</h1>
+		<div class="con_dec">为了更好的鼓励活跃分享者的分享积极性分享，平台特针对有创业需求的、有兼职需求的有特别想赚钱的人进行公司长期辅助，
+			并给予政策方面的大力资金奖励！一旦签约平台总监享受定期定量的资金补助、数额较大！额度喜人！</div>
+		<span class="condition">报名条件：</span>
+		<div class="cont_condition">
+			<p>1、个人直系和人脉粉丝突破30人以上</p>
+			<p>2、有较强的事业心，永于分享</p>
+			<p>3、愿意把自己成功的分享经验分享给别人</p>
+		</div>
+		<!--<p class="condition"></p>-->
+		<!--<p class="power"></p>-->
+		<h1>报名信息</h1>
+		<div class="form">
+			<div><p>姓&nbsp;&nbsp;名：</p><div class="inp"><input type="text" placeholder="请输入您的姓名" class="name"/></div></div>
+			<div><p>手 机 号：</p><div class="inp"><input type="text" placeholder="请输入您的手机号" class="telephone"/></div></div>
+			<div><p>微 信 号：</p><div class="inp"><input type="text" placeholder="请输入您的微信号" class="weixin"/></div></div>
+			<div><p>所在地址：</p><div class="inp"><input type="text" placeholder="请输入您所在的地址" class="address"/></div></div>
+		</div>
+		<div class="submit">提交信息</div>
+
+	</div>
+	
+</div>
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token') ;
+	var name='';//姓名
+	var telephone='';//手机号
+	var weixin='';//微信号
+	var address='';//地址	
+	
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+           	this.apply();
+           	this.banner();
+            },
+            ajax:function(){
+            	$.ajax({
+        		type:"post",
+        		url:ulr_common+"mobile/Carsafe/apply_car_ceo",
+        		dataType:'json',
+                data:{
+                    token: token,
+                    name:name,
+                    telephone:telephone,
+                    weixin:weixin,
+                    address:address,
+                   
+                },
+                success:function(data){
+                	
+                	 if(data.code == 200){
+//                	     alert('成功报名');
+                         layer.open({
+							  content: '报名成功',skin: 'msg',time:1.5 //2秒后自动关闭
+						  });
+                	 }else{ 
+                  	 	console.log(data)
+                      layer.open({
+                          content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                      });
+                    }
+                },
+                error:function (errordata) {
+                    console.log('请求出错error') ;
+                   
+                }
+        	});
+            },
+           apply:function(){
+	           	 $(".submit").click(function(){
+	            	name = $('.name').val().replace(/\s/g, ""); // 用户名
+		            telephone = $('.telephone').val().replace(/\s/g, ""); // 手机号
+		            weixin = $('.weixin').val().replace(/\s/g, ""); // 微信号
+		            address = $('.address').val().replace(/\s/g, ""); //地址
+		            var myreg = /^1[34578]\d{9}$/; //   手机号正则
+		           var wxreg=/^[\u4e00-\u9fa5]+$/;//微信号正则
+		            if(name==''){
+		            	 layer.open({
+		                    content: '请输入用户名',skin: 'msg',time:1.5 //2秒后自动关闭
+		                });
+	           		}else if(telephone == ''){
+	                    layer.open({
+	                        content: '请输入手机号',skin: 'msg',time:1.5 //2秒后自动关闭
+	                 });
+	               }else if(!myreg.test(telephone)){
+	                    layer.open({
+	                        content: '请输入有效的手机号',skin: 'msg',time:1.5 //2秒后自动关闭
+	                });
+	               }else if(weixin==''){
+	                	 layer.open({
+	                        content: '请输入微信号',skin: 'msg',time:1.5 //2秒后自动关闭
+	                 });	
+	                }else if(wxreg.test(weixin)){
+	                	 layer.open({
+	                        content: '请输入正确的微信号',skin: 'msg',time:1.5 //2秒后自动关闭
+	                 });	
+	                }else if(address==''){
+	                	 layer.open({
+	                        content: '请输入地址',skin: 'msg',time:1.5 //2秒后自动关闭
+	                 });	
+	                }
+	                else{
+	                	Fun().ajax()
+	                }
+	            })
+           },
+           banner:function(){
+           	$.ajax({
+        		type:"get",
+        		url:ulr_common+"mobile/Carsafe/carsafe_ceo_img",
+        		dataType:'json', 
+        		 data:{
+                    token: token,                   
+                },
+                success:function(data){                	
+                	 if(data.code == 200){
+//                	 	console.log(data.body.condition);
+//                	 	console.log(data.body.power);
+                  	   $(".banner_info").html('<img src='+data.body.img+' />');
+//                  	   $(".condition").text('报名条件：'+data.body.condition);
+//                  	   $(".power").text('拥有权益：'+data.body.power)
+                	 }else{                  	 
+                      layer.open({
+                          content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                      });
+                    }
+                },
+                error:function (errordata) {
+                    console.log('请求出错error') ;
+                   
+                }
+        	});
+           }
+           
+        }
+    }
+</script>
+</html>

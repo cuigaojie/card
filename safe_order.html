@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>车险订单</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/insurance.css"/>
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+		.list2 li{box-shadow: 0 0 0rem #fff;padding:0;margin:.25rem auto;}
+		.list2{width:100%;}
+		.list2 .sub_list{width:100%;}
+		button{outline: none;border:none;}
+
+    </style>
+<body>
+<div class="content">
+	<ul class="tab_orderlist">
+		<li><img src="img/xyk@2x.png" alt="" /><p>信用卡订单列表</p></li>
+		<li class="li_on"><img src="img/che@2x22.png" alt="" /><p>车险订单列表</p></li>
+	</ul>
+	<ul class="tab_order">
+		<li class="li_active"><p>车险报价中</p></li>
+		<li><p>车险已报价</p></li>
+		<li><p>已支付保单</p></li>
+		<li><p>保单已邮寄</p></li>
+	</ul>
+	<div class="order_content">
+		<div class="list1 list">
+			<ul class="sub_list">
+				<!--<li>-->
+				<!--<div>-->
+				<!--<img src="img/geren@2x.png" alt="" />-->
+				<!--<p>购险人 ：<b>XXXXXX</b></p>-->
+				<!--</div>-->
+				<!--<div>-->
+				<!--<img src="img/phone@2x.png" alt="" />-->
+				<!--<p>手机号：<b>XXXXXX</b></p>-->
+				<!--</div>-->
+				<!--<div>-->
+				<!--<img src="img/ds.png" alt="" />-->
+				<!--<p>车牌号：<b>XXX！</b></p>-->
+				<!--</div>-->
+				<!--<div>-->
+				<!--<img src="img/shijian@2x.png" alt="" />-->
+				<!--<p>更新时间：<b>2018-09-09</b></p>-->
+				<!--</div>-->
+				<!--</li>-->
+
+			</ul>
+		</div>
+		<div class="list2 list" style="display: none;">
+			<ul class="sub_list">
+				<!--<li>-->
+					<!--<div class="items"><img src="img/geren@2x.png" alt="" /><p>购险人 ：<b>XXXXXX</b></p></div>-->
+					<!--<div class="items"><img src="img/phone@2x.png" alt="" /><p>手机号：<b>XXXXXX</b></p></div>-->
+					<!--<div class="items"><img src="img/shijian@2x.png" alt="" /><p>更新时间：<b>2018-09-09</b></p></div>-->
+					<!--<div class="items"><img src="img/factory.png" alt="" /><p>保险公司:</p></div>-->
+					<!--<div class="safe_factype">-->
+						<!--<dl class="safe_fac "><dt class="fl fac_logo"><img src="img/7955057c44bb9c44583ab91234ca5315@2x.png" alt=""></dt>-->
+							<!--<dd class="fl fac_order bd"><div class="fl"><div class="name_safe"><img src='img/shangye@2x.png' alt='' class=""><span>交强险金额：9.99</span></div><p class="order_num">订单号：P093000003149031</p></div><div class="fr order_copy">复制订单号支付</div></dd>-->
+							<!--<dd class="fl fac_order"><div class="fl"><div class="name_safe"><img src='img/shangye@2x.png' alt='' class=""><span>交强险金额：9.99</span></div><p class="order_num">订单号：P093000003149031</p></div><div class="fr order_copy">复制订单号支付</div></dd>-->
+						<!--</dl>-->
+						<!--<p class="downmore"><span>下拉展开更多</span><img src="img/renshou@2x.png" alt=""></p>-->
+					<!--</div>-->
+
+				<!--</li>-->
+			</ul>
+
+			<div class="bottom vertical"><span class="need_topay">需支付：<b class="pay_money"><i class="mon">0</i>元</b></span><button class="to_pay">去支付></button></div>
+		</div>
+		<div class="list3 list"  style="display: none;">
+			<ul class="sub_list">
+				<!--<li>-->
+				<!--<div>-->
+				<!--<img src="img/geren.png" alt="" />-->
+				<!--<p>申请人 ：<b>XXXXXX</b></p>-->
+				<!--</div>-->
+				<!--<div>-->
+				<!--<img src="img/phone@2x.png" alt="" />-->
+				<!--<p>手机号 ：<b>15738372740</b></p>-->
+				<!--</div>-->
+				<!---->
+				<!--<div>-->
+				<!--<img src="img/dd@2x.png" alt="" />-->
+				<!--<p>更新时间：<b>8.88</b></p>-->
+				<!--</div>-->
+				<!--<div>-->
+				<!--<img src="img/shijian@2x.png" alt="" />-->
+				<!--<p>保单号：<b>400-500-600</b></p>-->
+				<!--</div>-->
+				<!--<div>-->
+				<!--<img src="img/factory.png" alt="" />-->
+				<!--<p>保险公司：<b>XXX！</b></p>-->
+				<!--</div>-->
+				<!--<div><img src="img/jiaoqiang@2x.png" alt="" /><p>交强险金额：<b>9.99</b></p></div>-->
+				<!--<div><img src="img/shangye@2x.png" alt="" /><p>商业险金融：<b>99.99</b></p></div>-->
+				<!--</li>-->
+
+			</ul>
+		</div>
+		<div class="list4 list"  style="display: none;">
+			<ul class="sub_list ">
+				<!--<li><div><img src="img/geren.png" alt="" /><p>申请人 ：<b>XXXXXX</b></p></div>-->
+				<!--<div><img src="img/phone@2x.png" alt="" /><p>手机号 ：<b>15738372740</b></p></div>-->
+				<!--<div><img src="img/dd@2x.png" alt="" /><p>更新时间：<b>8.88</b></p></div>-->
+				<!--<div><img src="img/shijian@2x.png" alt="" /><p>保单号：<b>400-500-600</b></p></div>-->
+				<!--<div><img src="img/factory.png" alt="" /><p>保险公司：<b>XXX！</b></p></div></li>-->
+			</ul>
+		</div>
+	</div>
+	<!--一键复制-->
+	<!--<a class="copy" data-text="123456a">复制文本</a>-->
+	<!--<input type="hidden" value="" id="money">-->
+
+<div class="mask"></div>
+
+
+	
+</div>
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="js/clipboard.min.js"></script>
+
+
+<script src="js/swiper.min.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+	
+
+    var token = getUrl('token') ;
+
+    $(function(){
+        Fun().init();
+        
+    });
+    var Fun = function(){
+        return{
+            init:function(){
+            this.jump();
+            this.tab();
+            this.copy();
+            this.ajax();
+            } ,
+            ajax:function(){
+                $.ajax({
+                    type: 'get',
+                    url: ulr_common + 'mobile/Carsafe/carsafe_listss',
+                    dataType: 'json',
+                    data: {
+                        token: token,
+
+                    },
+                    success:function(data){
+                        if(data.code==200){
+                            console.log(data)
+                            Fun().offer_list(data.body);//报价中
+                            Fun().offer_infos(data.body);//已报价
+							Fun().carsafe_infos(data.body)//保险公司/**/
+                            Fun().have_pay(data.body);//已支付
+							Fun().send_infos(data.body);//已邮寄
+
+                        }else{
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                        }
+
+                    },
+                    error: function (errordata) {
+                        console.log('请求出错1') ;
+                        // alert('请求出错');
+                    }
+                })
+
+            },
+            jump:function(){
+            	$(".tab_orderlist li").eq(0).click(function(){
+            		window.location.href='my_order.html?token='+token
+            	})
+            },
+            tab:function(){
+            	$(".tab_order li").each(function(i){
+            		$(".tab_order li").eq(i).on("click","p",function(){
+            			$(".tab_order li").eq(i).addClass("li_active").siblings().removeClass("li_active")
+            			$(".order_content .list").eq(i).show().siblings().hide()
+            		})
+            	})
+            },
+            copy:function(){
+                var clipboard = new ClipboardJS('.order_copy',{
+                    text: function(trigger) {
+                        layer.open({
+                            content: '已复制到粘贴板',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+//                        console.log(trigger.getAttribute('data-text'))
+                        return trigger.getAttribute('data-text');
+                    }
+                });
+            },
+
+            offer_list:function(data){
+                if(data.offer_list==null){
+                    $(".list1 .sub_list").html('<p class="none">暂无数据</p>')
+                }else{
+                $.each(data.offer_list,function(i,o){
+                    $(".list1 .sub_list").append('<li><div class="items"><img src="img/geren@2x.png" alt="" /><p>购险人 ：<b>'+data.offer_list[i].name+'</b></p></div>' +
+                        '<div class="items"><img src="img/phone@2x.png" alt="" /><p>手机号：<b>'+data.offer_list[i].telephone+'</b></p></div><div class="items">' +
+                        '<img src="img/ds.png" alt="" /><p>车牌号：<b>'+data.offer_list[i].car_licence+'</b></p></div><div class="items"><img src="img/shijian@2x.png" alt="" />' +
+                        '<p>更新时间：<b>'+data.offer_list[i].create_time+'</b></p></div></li>')
+                })
+
+                }
+            },
+            offer_infos:function(data){
+                console.log(data)
+                if(data.offer_infos==null){
+                    $(".list2 .sub_list").html('<p class="none">暂无数据</p>')
+                }else{
+                $(data.offer_infos).each(function(i){
+                    $(".list2 .sub_list").append('<li><div class="items"><img src="img/geren@2x.png" alt="" /><p>购险人 ：<b>'+data.offer_infos[i].name+'</b></p>' +
+                        '</div><div class="items"><img src="img/phone@2x.png" alt="" /><p>手机号：<b>'+data.offer_infos[i].telephone+'</b></p>' +
+                        '</div><div class="items"><img src="img/shijian@2x.png" alt="" /><p>更新时间：<b>'+data.offer_infos[i].create_time+'</b></p></div>' +
+                        '<div class="items factory_s"><img src="img/factory.png" alt="" /><p>保险公司</p></div><div class="all_fac_safe"><div class="safe_factype"></div></div></li>');
+                if(data.offer_infos[i].carsafe_infos==null){
+                    $(".list2 li").eq(i).find(".all_fac_safe").html('<p class="none">暂无数据</p>')
+                }else{
+                	 $.each(data.offer_infos[i].carsafe_infos,function(j) {
+                        $(".list2 li").eq(i).find(".safe_factype").append('<dl class="safe_fac"><dt class="fl fac_logo"><img src='+data.offer_infos[i].carsafe_infos[j].img+' alt=""></dt>' +
+							'<dd class="fl fac_order bd"><div class="fl"><div class="name_safe"><img src="img/jiaoqiang@2x.png" alt="" class=""><span>交强险金额：' +
+							'<b>'+data.offer_infos[i].carsafe_infos[j].strong_money+'</b>' +
+							'</span></div><p class="order_num">订单号：<b>'+data.offer_infos[i].carsafe_infos[j].strong_orderno+'</b></p></div>' +
+							'<button class="fr order_copy" data-text='+data.offer_infos[i].carsafe_infos[j].strong_orderno+'>复制订单号支付</button>' +
+							'<div class="erweicode"><h2>扫描输入保单号支付</h2><div class="img_erwei"><img src='+data.offer_infos[i].carsafe_infos[j].two_barcodes2+' alt="" class="erwei">'+
+                            '<img src="img/7496895@2x.png" alt="" class="zhiwen"></div><p>【长按识别图中二维码】</p></div></dd>' +
+							'<dd class="fl fac_order"><div class="fl"><div class="name_safe"><img src="img/shangye@2x.png" alt="" class="">' +
+							'<span>商业险金额：<b>'+data.offer_infos[i].carsafe_infos[j].business_money+'</b></span></div>' +
+							'<p class="order_num">订单号：<b>'+data.offer_infos[i].carsafe_infos[j].business_orderno+'</b></p></div>' +
+							'<button class="fr order_copy" data-text='+data.offer_infos[i].carsafe_infos[j].business_orderno+'>复制订单号支付</button>' +
+							'<div class="erweicode"><h2>扫描输入保单号支付</h2><div class="img_erwei"><img src='+data.offer_infos[i].carsafe_infos[j].two_barcodes1+' alt="" class="erwei"/>' +
+							'<img src="img/7496895@2x.png" alt="" class="zhiwen"></div><p>【长按识别图中二维码】</p></div></dd></dl>')
+                   });
+                }                  
+                });
+                    var height=$(".safe_factype .safe_fac:first").height();
+                    var total_height=$(".safe_factype").height();
+                    console.log(total_height+'---'+height)
+                    if(total_height>=height){
+                        var $more=$('<p class="downmore"><span>下拉展开更多</span><img src="img/renshou@2x.png" alt=""></p>');
+                        $(".safe_factype").after($more);
+                    }else {
+
+                    }
+                }
+                $(".list2").on("click",".to_pay",function(){
+                    $(".dd_active  .erweicode").show();
+                    $(".mask").show();
+                    $("html,body").css("overflow","hidden")
+                })
+
+            },
+            have_pay:function(data){
+                if(data.have_pay==null){
+                    $(".list3 .sub_list").html('<p class="none">暂无数据</p>')
+                }else{
+                $.each(data.have_pay,function(i){
+                    $(".list3 .sub_list").append('<li><div class="items"><img src="img/geren.png" alt="" /><p>申请人 ：<b>'+data.have_pay[i].name+'</b></p>' +
+                        '</div><div class="items"><img src="img/phone@2x.png" alt="" /><p>手机号 ：<b>'+data.have_pay[i].telephone+'</b></p></div><div class="items"><img src="img/dd@2x.png" alt="" />' +
+                        '<p>更新时间：<b>'+data.have_pay[i].update_time+'</b></p></div><div class="items"><img src="img/shijian@2x.png" alt="" /><p>保单号：<b>'+data.have_pay[i].baodan+'</b></p>' +
+                        '</div><div class="items"><img src="img/factory.png" alt="" /><p>保险公司：<b>'+data.have_pay[i].carsafe_name+'</b></p></div><div class="type_s items"></div></li>');
+                    if(data.have_pay[i].price_status==1){
+                        $(".list3 li").eq(i).find(".type_s").html('<img src="img/jiaoqiang@2x.png" alt="" /><p>交强险金额：<b>'+data.have_pay[i].pay_money+'</b></p>');//
+                    }
+                    else if(data.have_pay[i].price_status==2){
+                        $(".list3 li").eq(i).find(".type_s").html('<img src="img/shangye@2x.png" alt="" /><p>商业险金额：<b>'+data.have_pay[i].pay_money+'</b></p>')//
+                    }
+				});}
+            },
+            send_infos:function(data){
+                if(data.send_infos==null){
+                    $(".list4 .sub_list").html('<p class="none">暂无数据</p>')
+                }else{
+                    $.each(data.send_infos,function(i){
+                        $(".list4 .sub_list").append(' <li><div class="items"><img src="img/geren.png" alt="" /><p>申请人 ：<b>'+data.send_infos[i].name+'</b></p></div>' +
+                            '<div class="items"><img src="img/phone@2x.png" alt="" /><p>手机号 ：<b>'+data.send_infos[i].telephone+'</b></p></div>' +
+                            '<div class="items"><img src="img/dd@2x.png" alt="" /><p>更新时间：<b>'+data.send_infos[i].update_time+'</b></p></div>' +
+                            '<div class="items"><img src="img/shijian@2x.png" alt="" /><p>保单号：<b>'+data.send_infos[i].baodan+'</b></p></div>' +
+                            '<div class="items"><img src="img/factory.png" alt="" /><p>保险公司：<b>'+data.send_infos[i].carsafe_name+'</b></p></div></li>')
+               		 })
+                }
+			},
+            carsafe_infos:function(data){
+				$(".list2").on("click",".downmore",function(){
+				    $(this).prev(".safe_factype").css({'height':"auto"});
+				    $(this).hide();
+				})
+                $(".to_pay").attr("disabled",true);
+                $(".list2").on("click",".order_copy",function(event){
+                    var that=$(event.target);
+                    $(that).parents('dl').addClass("dl_active").siblings().removeClass("dl_active");
+                    $(that).parents('dd').addClass("dd_active").siblings().removeClass("dd_active");
+                    var	money= $(event.target).parents(".fac_order ").find(".name_safe b").html();
+                    $(".mon").text(money);
+                    $(".to_pay").attr("disabled",false);
+                })
+                $(".mask").click(function(){
+                    $(".mask").hide();
+                    $(".erweicode").hide();
+                    $("html,body").css("overflow","auto")
+                })
+			},
+			
+
+        }
+    }
+</script>
+
+</html>

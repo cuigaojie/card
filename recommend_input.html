@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>申请推荐</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/card.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+        body, html{background-color: #f6f1ed;}
+        .inp_box ,.run_word{background-color: #fff;}
+    </style>
+</head>
+<body>
+<!--content 开-->
+<div class="content">
+    <!--输入框 部分-->
+    <div class="inp_box">
+        <div class="inp_item ">
+            <div class="wrap">
+                <p>姓 名：</p>
+                <input class="name" type="text" placeholder="请输入您的姓名"/>
+            </div>
+        </div>
+        <div class="inp_item">
+            <div class="wrap clearfix">
+                <p>微信号：</p>
+                <input class="wx_no" type="text" placeholder="请输入您的微信号"/>
+            </div>
+        </div>
+        <div class="inp_item">
+            <div class="wrap clearfix">
+                <p>手机号：</p>
+                <input class="tel" type="text" placeholder="请输入您的手机号"/>
+            </div>
+        </div>
+    </div>
+    <!--注意事项-->
+    <div class=" run_word_2">
+        <!--<p class="run_p1 wrap">注意事项：</p>-->
+       <!-- <img class="run_sb" src="img/sb.jpg" alt=""/>-->
+        <p class="run_p2">附上您的联系信息形成专属二维码海报吧！</p>
+    </div>
+    <!--下一步-->
+    <div class="run_btn_2">
+        <p>立即申请</p>
+    </div>
+</div>
+<!--content 结-->
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+    var token = getUrl('token') ;
+    var bankid = getUrl('bankid') ;
+    var diff = getUrl('diff') ; //1首页进来时传，2从卡种
+    var true_name = '' ; // 真实姓名
+    var tel = '' ; // 手机号
+    var wx_no = '' ; // 微信号
+    var atid =getUrl('atid') ;//推荐信息id
+    var where = getUrl('where') ;  //  where = amend  修改信息
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.click_btn(); // 立即申请
+                this.judge();  //判断是哪个页面进来的
+            },
+            //判断是哪个页面进来的
+            judge:function(){
+                console.log(where+'哈哈哈') ;
+                if(where == null){
+                    console.log(222)
+
+                }else{  //点击修改信息过来的
+                    console.log(where);
+                    $('.run_btn_2 p').text('立即修改') ;
+                    Fun().ajax_info_show() ;
+                }
+            },
+            //原始数据展示
+            ajax_info_show:function(){
+
+                $.ajax({
+                    type:'post',
+                    url: ulr_common+'mobile/Bank/apply_card',
+                    dataType:'json',
+                    data:{
+                        token: token ,
+                        atid: atid  // 推荐信息id
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            $('.name').val(data.body.true_name); // 用户名
+                            $('.tel').val(data.body.tel); // 手机号
+                            $('.wx_no').val(data.body.wx_no); // 微信号
+                        }else{
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                        }
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错1') ;
+                       // alert('请求出错');
+                    }
+                });
+            },
+            //请求
+            ajax:function(){
+                $.ajax({
+                    type:'post',
+                    url: ulr_common+'mobile/Bank/tui_commit',
+                    dataType:'json',
+                    data:{
+                        token: token ,
+                        bankid: bankid ,
+                        atid:atid , // 编辑时传该参数
+                        diff: diff , // 首页1  分类2
+                        true_name: true_name ,// 真实姓名
+                        tel: tel ,// 手机号
+                        wx_no: wx_no // 微信号
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            window.location.href  = 'poster_2.html?token='+token+'&bankid='+bankid+'&diff='+diff ;
+                        }else{
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错2') ;
+                        //alert('请求出错');
+                    }
+                });
+            },
+            // 立即申请
+            click_btn:function(){
+                $('.run_btn_2 p').click(function(){
+                    true_name = $('.name').val().replace(/\s/g, ""); // 用户名
+                    tel = $('.tel').val().replace(/\s/g, ""); // 手机号
+                    wx_no = $('.wx_no').val().replace(/\s/g, ""); // 微信号
+                    var myreg = /^1[34578]\d{9}$/; //   手机号正则
+                    if(true_name == ''){
+                        layer.open({
+                            content: '请输入用户名',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else if(wx_no == ''){
+                        layer.open({
+                            content: '请输入微信号',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else if(tel == ''){
+                        layer.open({
+                            content: '请输入手机号',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else if(!myreg.test(tel)){
+                        layer.open({
+                            content: '请输入有效的手机号',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else{
+                        //调用请求
+                        Fun().ajax();
+                    }
+                })
+            }
+        }
+    }
+</script>
+</html>

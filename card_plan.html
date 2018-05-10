@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>进度查询</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/card.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+        .bottom{background-color: #f6f1ed;height: 1.6rem;}
+        .content{margin-bottom: 1.6rem;}
+
+    </style>
+</head>
+<body>
+
+<!--content 开-->
+<div class="content">
+    <!--大图-->
+    <div class="plan_big">
+        <img src="img/banner_2.jpg" alt=""/>
+    </div>
+    <!--列表-->
+    <ul class="plan_list">
+       <!-- <li>
+            <img src="img/s_2.jpg" alt=""/>
+            <p class=" hid">浦发银行</p>
+        </li>-->
+    </ul>
+</div>
+<!--content 结-->
+<!--bottom 开-->
+<div class="bottom">
+    <p class="plan_p hid">信用卡平台科技信息服务有限公司提供技术服务</p>
+    <p class="plan_p hid">关注：《信用卡平台》了解更多信息</p>
+</div>
+<!--bottom 结-->
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token') ;
+
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax(); // 请求
+            },
+            // 请求
+            ajax:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/bank/progress_query',
+                    dataType:'json',
+                    data:{
+                        token: token
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            // 信用卡列表
+                            Fun().card_show(data.body);
+
+                        }else{
+                            console.log('请求出错204') ;
+                          //  alert('请求出错');
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错1') ;
+                        //alert('请求出错');
+                    }
+                });
+            },
+            // 信用卡列表
+            card_show:function(data){
+                $(data).each(function(i){
+                    $('.plan_list').append('  <li name="'+data[i].bank_url+'"> ' +
+                    '<img src="'+data[i].bank_pic+'" alt=""/> <p class=" hid">'+data[i].bank_name+'</p> ' +
+                    '</li>');
+                });
+
+                $('.plan_list li').click(function () {
+
+                    var url= $(this).attr('name') ;
+                    //console.log(url)
+                    window.location.href =  url ;
+                })
+
+            }
+        }
+    }
+</script>
+</html>

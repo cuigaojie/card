@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>免责说明</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/my.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+</head>
+<body>
+<!--content 开-->
+<div class="content">
+    <pre class="us_word wrap"><!--哈哈哈哈哈哈哈哈哈关于尼卧榻哈哈哈哈哈哈哈哈哈关于尼卧榻哈哈哈哈哈哈哈哈哈关于尼卧榻--></pre>
+</div>
+<!--content 结-->
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token') ;
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax_word();    // 内容 请求
+            },
+            // 注意事项 请求
+            ajax_word:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/public/user_agree',
+                    dataType:'json',
+                    data:{  },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            $('.us_word').append(data.body)
+
+                        }else{
+                            //alert('请求出错');
+                        }
+
+                    },
+                    error:function (errordata) {
+                        //alert('请求出错');
+                    }
+                });
+            }
+        }
+    }
+</script>
+</html>

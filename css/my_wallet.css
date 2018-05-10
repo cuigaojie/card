@@ -1,0 +1,252 @@
+@charset "UTF-8";
+/*我的粉丝团队 页面*/
+.group_info {
+  background-color: #eda03b;
+  height: 4.133333333333334rem;
+}
+.group_herder {
+  display: flex;
+  flex-direction: row;
+  padding-top: 0.4rem;
+}
+.group_pic {
+  width: 1.4666666666666666rem;
+  height: 1.4666666666666666rem;
+}
+.group_pic img {
+  width: 1.4666666666666666rem;
+  height: 1.4666666666666666rem;
+  border: 0.06666666666666667rem solid #38393e;
+  border-radius: 100%;
+}
+.gro_p1 span {
+  display: block;
+  font-size: 0.4rem;
+  color: #fff;
+  margin-left: 0.4rem;
+  line-height: 0.7333333333333333rem;
+}
+.gro_p2 {
+  font-size: 0.48rem;
+  color: #fff;
+  text-align: center;
+  line-height: 0.8rem;
+}
+/*团队数量*/
+.group_num {
+  background-color: #be802f;
+  display: flex;
+  flex-direction: row;
+  height: 2rem;
+}
+.gro_line {
+  width: 0.05333333333333334rem;
+  height: 1.4666666666666666rem;
+  background-color: #fff;
+  margin: 0.26666666666666666rem 0;
+}
+.gro_num_1 {
+  width: 4.973333333333334rem;
+  font-size: 0.4rem;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.8rem;
+  margin: 0.2rem 0;
+}
+/*切换按钮*/
+.group_btn {
+  border-top: 0.16rem solid #f6f1ed;
+}
+.group_btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0.26666666666666666rem 0;
+  border-bottom: 2px solid #f6f1ed;
+}
+.group_btn p {
+  font-size: 0.4rem;
+  color: #222;
+  text-align: center;
+  line-height: 0.7733333333333333rem;
+  width: 3.2rem;
+  border-radius: 0.16rem;
+  box-sizing: border-box;
+  border: 2px solid #222;
+}
+.group_btn .p_on {
+  background-color: #eda03b;
+  border: none;
+  color: #fff;
+}
+/*列表*/
+.group_list {
+  border-bottom: 0.26666666666666666rem solid #f6f1ed;
+}
+.group_list li {
+  padding: 0.26666666666666666rem 0;
+  border-bottom: 2px solid #f6f1ed;
+}
+.group_list li .wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.gro_le {
+  display: flex;
+  flex-direction: row;
+  width: 6.533333333333333rem;
+}
+.gro_le img {
+  width: 1.4666666666666666rem;
+  height: 1.4666666666666666rem;
+  border-radius: 100%;
+  border: 0.04rem solid #222222;
+}
+.gro_name {
+  font-size: 0.4rem;
+  line-height: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.26666666666666666rem;
+  width: 4.4rem;
+}
+.gro_name span {
+  color: #222;
+  margin-top: 0.13333333333333333rem;
+}
+.gro_name b {
+  color: #666;
+}
+.gro_where {
+  font-size: 0.4rem;
+  color: #222;
+  line-height: 1.4666666666666666rem;
+}
+/*我的钱包 页面*/
+.wallet_back {
+  width: 0.6666666666666666rem;
+  height: 0.6666666666666666rem;
+  margin-left: 0.3333333333333333rem;
+  padding-top: 0.2rem;
+}
+/*和粉丝团队公用样式  不同处*/
+.wallet_info {
+  height: 5.733333333333333rem;
+  background-color: #ff9000;
+}
+.wal_p2 {
+  font-size: 0.5333333333333333rem;
+  line-height: 1.2rem;
+  margin-top: 0.3333333333333333rem;
+}
+.wal_p3 {
+  font-size: 0.64rem;
+  line-height: 1.2rem;
+}
+.wal_num {
+  height: 1.6rem;
+}
+.wal_num {
+  background-color: #cc7300;
+}
+.wal_line {
+  height: 1.0666666666666667rem;
+}
+.wal_num_1 {
+  line-height: 0.6666666666666666rem;
+  margin: 0.13333333333333333rem 0;
+}
+.wal_num_1 span:first-child {
+  font-size: 0.48rem;
+}
+.wal_btn {
+  width: 5.333333333333333rem;
+  height: 1.3333333333333333rem;
+  background-color: #ff9000;
+  font-size: 0.48rem;
+  color: #fff;
+  text-align: center;
+  line-height: 1.3333333333333333rem;
+  margin: 1.8rem auto 0;
+  border-radius: 0.2rem;
+}
+.wal_btn_2 {
+  width: 6.666666666666667rem;
+  margin: 2.533333333333333rem auto 0;
+}
+/*体现页面*/
+.wal_inp {
+  display: flex;
+  flex-direction: row;
+  height: 1.3333333333333333rem;
+  border-bottom: 2px solid #f6f1ed;
+}
+.wal_inp p {
+  font-size: 0.4rem;
+  color: #222;
+  margin-left: 0.4rem;
+  line-height: 1.3333333333333333rem;
+}
+.wal_inp input {
+  width: 6rem;
+  border: none;
+  background-color: transparent;
+  font-size: 0.4rem;
+  color: #222;
+}
+.wal_word {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.4rem;
+}
+.wal_word p {
+  font-size: 0.32rem;
+  color: #666;
+  line-height: 0.6666666666666666rem;
+  width: 7.466666666666667rem;
+}
+.wal_word p:first-child {
+  font-size: 0.32rem;
+  color: #222;
+  width: 1.7333333333333334rem;
+}
+/*体现成功 页面*/
+.wal_end img {
+  width: 2.72rem;
+  height: 2.72rem;
+  margin: 2.3333333333333335rem auto 0.4rem;
+}
+.wal_end p {
+  font-size: 0.4rem;
+  color: #222;
+  text-align: center;
+}
+.wal_end p i {
+  color: #ff1717;
+}
+/*体现记录页面*/
+.record li {
+  border-bottom: 2px solid #f6f1ed;
+  padding: 0.4rem 0;
+}
+.record li .wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.record p {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.6666666666666666rem;
+}
+.record p span {
+  font-size: 0.4rem;
+  color: #222;
+}
+.record p b {
+  font-size: 0.32rem;
+  color: #222;
+}

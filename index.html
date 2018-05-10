@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>首页</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+        html,body{background-color: #f6f1ed;}
+        .news{padding-bottom: 0;}
+    </style>
+</head>
+<body>
+<!--content 开-->
+<div class="content">
+    <!--banner 开-->
+    <div class=" swiper-container banner" id="swiper-container1">
+        <div class="swiper-wrapper clearfix swiper-wrapper_1">
+           <!-- <div class="swiper-slide ">
+                <img src="img/banner.jpg" alt=""/>
+            </div>-->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <!--banner 结-->
+    <!--战报 开-->
+    <div class="news_box">
+        <div class="wrap">
+            <img class="new_logo" src="img/ic_1.jpg" alt=""/>
+            <div class="swiper-container news" id="swiper-container2">
+                <div class="swiper-wrapper clearfix swiper-wrapper_2">
+                    <!--每一项 开-->
+                    <!--  <div class="swiper-slide ">
+                          <div class="wrap">
+                              <img src="img/ic_1.jpg" alt=""/>
+                              <p class="">申请提现：<b>￥150</b>  <i>*******1891</i></p>
+                              <span>时间：9.50</span>
+                          </div>
+                      </div>-->
+                    <!--每一项 结-->
+                    <!--后期的改动 开-->
+                   <!-- <div class="swiper-slide ">
+                        <p class="zl_p">申请提现：</p>
+                    </div>-->
+                    <!--后期的改动 结-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--战报 结-->
+    <!--卡片列表 开-->
+    <div class="card_box">
+        <ul class="card_list">
+       <!--     <li>
+                <img class="card_icon" src="img/card_1.png" alt=""/>
+                <div class="card_s">
+                    <b></b>
+                    <span class="hidl">秒批</span>
+                </div>
+                <p class="card_p1 hid">农业银行</p>
+                <p class="card_p2 hid">白户可办</p>
+                <p class="card_p3 hid">奖金￥99</p>
+                <img class="card_icon2" src="img/ic_2.png" alt=""/>
+             </li>-->
+        </ul>
+    </div>
+    <!--卡片列表 结-->
+    <!--信用卡分类 开-->
+   <!-- <div class="card_classify">
+        <div class="cla_ti hid">
+            <img src="img/ic_9.png" alt=""/>
+            <p>信用卡分类申请</p>
+            <img src="img/ic_10.png" alt=""/>
+        </div>
+        <ul class="cla_list">
+            <li>
+                <img class="cla_b" src="img/f_1.png" alt=""/>
+                <div class="cla_main">
+                    <img src="img/f_11.png" alt=""/>
+                    <p class="hid">&lt;!&ndash;大额高端卡&ndash;&gt;</p>
+                </div>
+            </li>
+            <li>
+                <img class="cla_b" src="img/f_2.png" alt=""/>
+                <div class="cla_main">
+                    <img src="img/f_22.png" alt=""/>
+                    <p class="hid">&lt;!&ndash;高端卡&ndash;&gt;</p>
+                </div>
+            </li>
+            <li>
+                <img class="cla_b" src="img/f_3.png" alt=""/>
+                <div class="cla_main">
+                    <img src="img/f_33.png" alt=""/>
+                    <p class="hid">&lt;!&ndash;高端卡&ndash;&gt;</p>
+                </div>
+            </li>
+            <li>
+                <img class="cla_b" src="img/f_4.png" alt=""/>
+                <div class="cla_main">
+                    <img src="img/f_44.png" alt=""/>
+                    <p class="hid">&lt;!&ndash;热门新品&ndash;&gt;</p>
+                </div>
+            </li>
+        </ul>
+    </div>-->
+    <!--信用卡分类 结-->
+    <!--进度查询 开-->
+    <div class="plan">
+        <img src="img/ic_3.png" alt=""/>
+        <p class="hid">申请进度查询</p>
+    </div>
+    <!--进度查询 结-->
+</div>
+
+
+<!--content 结-->
+<!--蒙版-->
+<div class="mask_1 close_all"></div>
+<!--弹框 开-->
+<div class="pup_1">
+    <div class="close close_all">
+        <img  src="img/cha.png" alt=""/>
+    </div>
+    <div class="pup_num">
+        <p>
+            <span class="hid">总额</span>
+            <span class="hid">人脉</span>
+            <span class="hid">直属</span>
+            <span class="hid">亲身</span>
+        </p>
+        <p>
+            <span class="hid pup_money_0"><!--48--></span>
+            <span class="hid pup_money_1"><!--48--></span>
+            <span class="hid pup_money_2"><!--48--></span>
+            <span class="hid pup_money_3"><!--48--></span>
+        </p>
+    </div>
+    <div class="pup_word">
+        <p class="pup_p2"> 核卡业绩更新周期：一般银行的数据回馈时间为T+3-7个工作日时间，也就是本周二更新上周所有的核卡数据（碰到系统升级会另行通知）</p>
+        <p class="pup_p1"> 结算提现周期： 结算周期目前是日结算，每天的下午2点到5点审核昨天的提现申请，审核通过的一般5分钟到账到微信钱包里面！</p>
+			
+			
+			
+        <p class="pup_p2">核卡标准：如以前有申请过此银行的信用卡，将不受该奖励金；</p>
+        <p class="pup_p1 pup_3"></p>
+
+    </div>
+</div>
+<!--弹框 结-->
+<!--bottom 开-->
+<div class="bottom">
+    <ul class="bot_list">
+        <li class="li_on">
+            <img src="img/b_1.png" alt=""/>
+            <p>信用卡</p>
+        </li>
+        <li>
+            <img src="img/b_22.png" alt=""/>
+            <p>分享攻略</p>
+        </li>
+        <li>
+            <img src="img/che_3.png" alt=""/>
+            <p>车险</p>
+        </li>
+
+        <li>
+            <img src="img/b_33.png" alt=""/>
+            <p>个人中心</p>
+        </li>
+    </ul>
+</div>
+<!--bottom 结-->
+</body>
+
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+
+
+<script src="js/swiper.min.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token') ;
+
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax(); // 请求
+            },
+            // 请求
+            ajax:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/Bank/index',
+                    dataType:'json',
+                    data:{
+                        token: token
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            // 轮播展示
+                            Fun().swiper(data.body.banner);
+                            // 战报
+                            Fun().news(data.body.zb);
+                            // 分类
+                            Fun().classify(data.body.credit_type);
+                            // 信用卡列表
+                            Fun().card_show(data.body.list);
+                            // 跳转
+                            Fun().jump();
+
+                        }else{
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错error_2') ;
+                       // alert('服务器不在状态');
+                    }
+                });
+            },
+            // 轮播
+            swiper:function(data){
+                $(data).each(function(i){
+                    $('.swiper-wrapper_1').append('  <div class="swiper-slide "> ' +
+                    '<img src='+data[i].imgid+' alt=""/> ' +
+                    '</div>');
+                });
+
+                var swiper1 = new Swiper('#swiper-container1', {
+                   // autoplay: 3000, //自动切换的时间间隔
+                    pagination : '.swiper-pagination',
+                    speed:500, //滑动速度，即slider自动滑动开始到结束的时间
+                    loop:true,
+                    autoplayDisableOnInteraction:false
+                });
+            },
+            // 战报
+            news:function(data){
+
+               /* $(data).each(function(i){
+                    $('.swiper-wrapper_2').append(' <div class="swiper-slide "> <div class="wrap"> ' +
+                    '<img src="img/ic_1.jpg" alt=""/>' +
+                    ' <p>'+data[i].sign+'：<b>￥'+data[i].change_price+'</b> ' +
+                    ' <i>'+data[i].tel+'</i>' +
+                    '</p>' +
+                    ' <span>时间：'+data[i].createdtime+'</span>' +
+                    '</div> ' +
+                    '</div>');
+                });*/
+                $(data).each(function(i){
+                    $('.swiper-wrapper_2').append(' <div class="swiper-slide "> <div class="wrap"> ' +
+                    '<p class="zl_p hid">'+data[i].fensi+'</p>'+
+                    '</div> ' +
+                    '</div>');
+                });
+                var swiper2 = new Swiper('#swiper-container2', {
+                    autoplay: {
+                     delay: 1500,
+                     stopOnLastSlide: false,
+                     disableOnInteraction: true
+                     },
+                    direction: 'vertical',
+                    speed:2000, //滑动速度，即slider自动滑动开始到结束的时间
+                    loop:true,
+                    autoplayDisableOnInteraction:false
+                });
+
+            },
+            // 信用卡列表
+            card_show:function(data){
+                $(data).each(function(i){
+                    $('.card_list').append('<li> ' +
+                    '<div class="go_poster" id="'+data[i].id+'"> ' +
+                    '<img class="card_icon" src="'+data[i].imgid+'" alt=""/> ' +
+                    '<div class="card_s"> ' +
+                    '<b></b> <span class="hid">'+data[i].miaopi+'</span> ' +
+                    '</div> ' +
+                    '<p class="card_p1 hid">'+data[i].name+'</p> ' +
+                    '<p class="card_p2 hid">'+data[i].brief+'</p> ' +
+                    '</div> ' +
+                    '<img class="card_icon2 pup_sh" src="img/ic_2.png" alt=""/> ' +
+                    '</li>');
+                });
+                // 点击出现弹框
+                Fun().pup();
+            },
+            // 分类
+            classify:function(data){
+                $('.cla_list li').each(function(i){
+                    $(this).find('p').text(data[i].credit_type) ;
+                    $(this).attr('id',data[i].id) ;
+                })
+
+            },
+            //佣金奖励的请求
+            monwy_ajax:function(id){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/bank/rzq',
+                    dataType:'json',
+                    data:{
+                        token: token ,
+                        id : id ,
+                        diff : 1
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            $('.pup_money_0').text(data.body.total_money) ; // 总额
+                            $('.pup_money_1').text(data.body.second_money) ; // 人脉
+                            $('.pup_money_2').text(data.body.first_money) ; // 直属
+                            $('.pup_money_3').text(data.body.my_money) ;  // 亲身
+                            $('.pup_3').text(data.body.yj_intro) ;  //  文字介绍
+                        }else{
+                            console.log('请求出错204') ;
+                            //alert('请求出错');
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错error') ;
+                        //alert('请求出错');
+                    }
+                });
+            },
+            // 出现or关闭  弹框
+            pup:function(){
+
+                //粗线弹框
+               $('.pup_sh').click(function(){
+                    $('.pup_1').addClass('show_all');
+                    $('.mask_1').addClass('show_all');
+                    $('body ,html').css('overflow','hidden') ;
+
+                   var id = $(this).parents('li').find('.go_poster').attr('id');
+                   console.log(id);
+                   Fun().monwy_ajax(id);
+
+                });
+                // 关闭弹框
+                $('.close_all').click(function(){
+                    $('.pup_1').removeClass('show_all');
+                    $('.mask_1').removeClass('show_all');
+                    $('body ,html').css('overflow','auto')
+                })
+
+            },
+            // 跳转
+            jump:function(){
+                // 调转 信用卡海报页面
+                $('.card_list .go_poster').click(function(){
+                    var id = $(this).attr('id');
+                    window.location.href  = 'poster_card.html?token='+token+'&id='+id+'&diff=1' ;
+                });
+                // 调转 信用卡分类
+                $('.cla_list li').click(function(){
+                    var id = $(this).attr('id');
+
+                    window.location.href  = 'card_classify.html?token='+token+'&id='+id+'&diff=2' ;
+                });
+                // 进度查询
+                $('.plan').click(function(){
+                    var id = $(this).attr('id');
+                    window.location.href  = 'card_plan.html?token='+token ;
+                });
+            }
+        }
+    }
+</script>
+</html>

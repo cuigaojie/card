@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>申请办卡</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/card.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+</head>
+<body>
+<!--content 开-->
+<div class="content">
+    <p class="run_ti">申请人信息</p>
+    <!--输入框 部分-->
+    <div class="inp_box">
+        <div class="inp_item ">
+            <div class="wrap">
+                <p>填写姓名：</p>
+                <input class="name" type="text" placeholder="请输入您的姓名"/>
+            </div>
+        </div>
+        <div class="inp_item">
+            <div class="wrap clearfix">
+                <p>手 机 号：</p>
+                <input class="tel" type="text" placeholder="请输入您的手机号"/>
+                <span class="fa_code">验证码</span>
+            </div>
+        </div>
+        <div class="inp_item">
+            <div class="wrap">
+                <p>验 证 码  ：</p>
+                <input class="code" type="text" placeholder="请输入验证码"/>
+            </div>
+        </div>
+        <div class="inp_item">
+            <div class="wrap">
+                <p>输入身份证号：</p>
+                <input class="card_no" type="text" placeholder="请输入您的身份证"/>
+            </div>
+        </div>
+    </div>
+    <!--注意事项-->
+    <div class="run_word ">
+        <p class="run_p1">注意事项：</p>
+        <p class="run_p2">1、请务必填写真实有效信息，确保您的信用卡能够准确接到申请电话或者短信通知</p>
+        <p class="run_p2">2、办卡审核通知将直接以短信形式发送至该手机号</p>
+        <p class="run_p2">3、身份证号务必填写准确，确保工作人员准确核实你的申请信息</p>
+    </div>
+    <!--同意-->
+    <div class="agree">
+        <img src="img/ic_6.png" alt=""/>
+        <p>
+           <b> 阅读知晓并同意以下条款</b>
+            <i >《信用卡平台用户协议免责声明》</i>
+        </p>
+    </div>
+    <!--下一步-->
+    <div class="run_btn">下一步</div>
+</div>
+<!--content 结-->
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+
+    var token = getUrl('token') ;
+    var bankid = getUrl('bankid') ;
+    var diff = getUrl('diff') ; //1首页进来时传，2从卡种
+    var name = '' ; // 姓名
+    var tel = '' ; // 手机号
+    var verify = '' ; //  输入框   验证码
+    var card_no = '' ; // 省份证
+    var code = ''  ; //手机收到的验证码
+
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                //this.ajax(); //请求
+                this.fa_code();  // 点击发送验证码
+                this.click_btn(); //下一步
+                this.agree(); // 同意
+                this.jump();  // 跳转
+            },
+
+            //请求
+            ajax:function(){
+                $.ajax({
+                    type:'post',
+                    url: ulr_common+'mobile/Bank/apply_card',
+                    dataType:'json',
+                    data:{
+                        token: token ,
+                        bankid: bankid ,
+                        diff: diff , // 首页1  分类2
+                        type: 1 , //1立即办卡2我要推荐
+                        name: name ,// 姓名
+                        tel: tel ,// 手机号
+                        verify:  verify , //验证码
+                        card_no: card_no // 省份证
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            window.location.href = data.body ;
+
+                          /*  layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                            setTimeout(function(){
+                                window.location.href = data.body ;
+                            },1800);
+                        */
+                        }else{
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错1') ;
+                       // alert('请求出错');
+                    }
+                });
+            },
+            // 点击发送验证码
+            fa_code: function () {
+                $('.fa_code').click(function(){
+
+                    tel = $('.tel').val().replace(/\s/g, ""); // 手机号
+
+                    if($(this).hasClass('fa_code_on')){  //倒计时没有结束
+                        return false ;
+                    }else{
+                        $.ajax({
+                            type:'post',
+                            url: ulr_common+'mobile/user/sms',
+                            dataType:'json',
+                            data:{
+                                token: token ,
+                                telephone: tel
+                            },
+                            success:function (data) {
+                                console.log(data);
+                                if(data.code == 200){
+
+                                    code = data.body.code ; //  短信验证码
+                                    /*60s倒计时*/
+                                    var num = 60;
+                                    var time =  setInterval(function(){
+                                        num--;
+                                        if(num > 0){
+                                            $('.fa_code').addClass('fa_code_on');
+                                            $('.fa_code').text(num+'s');
+                                        }else{
+                                            clearInterval(time); //清除js定时器
+                                            $('.fa_code').text('获取验证码');
+                                            $('.fa_code').removeClass('fa_code_on');
+                                        }
+
+                                    },1000) ;
+                                }else{
+                                    layer.open({
+                                        content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                                    });
+                                }
+                            },
+                            error:function (errordata) {
+                                console.log('请求出错2') ;
+                                //alert('请求出错');
+                            }
+                        });
+                    }
+                })
+
+            },
+            // 下一步
+            click_btn:function(){
+                $('.run_btn').click(function(){
+
+                    name = $('.name').val().replace(/\s/g, ""); // 用户名
+                    tel = $('.tel').val().replace(/\s/g, ""); // 手机号
+                    verify = $('.code').val().replace(/\s/g, ""); // 验证码
+                    card_no = $('.card_no').val().replace(/\s/g, ""); // 身份证
+                    var myreg = /^1[34578]\d{9}$/; //   手机号正则
+                    if(name == ''){
+                        layer.open({
+                            content: '请输入用户名',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else if(tel == ''){
+                        layer.open({
+                            content: '请输入手机号',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else if(!myreg.test(tel)){
+                        layer.open({
+                            content: '请输入有效的手机号',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else if(verify == ''){
+                        layer.open({
+                            content: '请输入验证码',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else if(card_no == ''){
+                        layer.open({
+                            content: '请输入身份证号',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else if($('.agree img').attr('src') != 'img/sel.png'){
+                        layer.open({
+                            content: '请同意注册协议',skin: 'msg',time: 2 //2秒后自动关闭
+                        });
+                    }else{
+                        //调用请求
+                        Fun().ajax();
+                    }
+                })
+            },
+            // 同意
+            agree:function(){
+                $('.agree img').click(function(){
+                    if($(this).attr('src') == 'img/ic_6.png'){
+                        $(this).attr('src','img/sel.png')
+                    }else{
+                        $(this).attr('src','img/ic_6.png')
+                    }
+                })
+            },
+            // 跳转
+            jump:function(){
+                $('.agree i').click(function () {
+                    window.location.href = 'user_word.html?token='+token ;
+                })
+            }
+        }
+    }
+</script>
+</html>

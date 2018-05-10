@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>绑定支付宝</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/card.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+</head>
+<body>
+<!--content 开-->
+<div class="content">
+
+    <!--输入框 部分-->
+    <div class="inp_box">
+        <div class="inp_item ">
+            <div class="wrap">
+                <p>填写姓名：</p>
+                <input class="name" type="text" placeholder="请输入您的姓名"/>
+            </div>
+        </div>
+        <div class="inp_item">
+            <div class="wrap clearfix">
+                <p>支付宝号：</p>
+                <input class="tel" type="text" placeholder="请输入您的支付宝号"/>
+
+            </div>
+        </div>
+
+    </div>
+    <!--注意事项-->
+    <div class="run_word ">
+        <p class="run_p1">注意事项：</p>
+        <p class="run_p2">1、请务必填写真实有效信息，确保您的支付宝账号是您个人的！</p>
+
+    </div>
+    <!--下一步-->
+    <div class="run_btn">提交</div>
+</div>
+<!--content 结-->
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+
+    var token = getUrl('token') ;
+    var bankid = getUrl('bankid') ;
+    var diff = getUrl('diff') ; //1首页进来时传，2从卡种
+    var hold_name = '' ; // 姓名
+    var ali_no = '' ; // 支付宝 号
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.click_btn(); //下一步
+                this.jump();  // 跳转
+            },
+            //请求
+            ajax:function(){
+                $.ajax({
+                    type:'post',
+                    url: ulr_common+'mobile/Bank/add_alino',
+                    dataType:'json',
+                    data:{
+                        token: token ,
+                        hold_name: hold_name ,// 姓名
+                        ali_no: ali_no // 支付宝号
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                            /*setTimeout(function(){
+                                //去添加 支付宝号
+                                window.location.href  = 'bound_pay.html?token='+token ;
+                            },1800)
+*/
+                        }else{
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错') ;
+                       // alert('请求出错');
+                    }
+                });
+            },
+            // 下一步
+            click_btn:function(){
+                $('.run_btn').click(function(){
+
+                    hold_name = $('.name').val().replace(/\s/g, ""); // 用户名
+                    ali_no = $('.tel').val().replace(/\s/g, ""); // 手机号
+
+                    if(hold_name == ''){
+                        layer.open({
+                            content: '请输入用户名',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else if(ali_no == ''){
+                        layer.open({
+                            content: '请输入支付宝号',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else{
+                        //调用请求
+                        Fun().ajax();
+                    }
+                })
+            },
+            // 同意
+            agree:function(){
+                $('.agree img').click(function(){
+                    if($(this).attr('src') == 'img/ic_6.png'){
+                        $(this).attr('src','img/sel.png')
+                    }else{
+                        $(this).attr('src','img/ic_6.png')
+                    }
+                })
+            },
+            // 跳转
+            jump:function(){
+                $('.agree i').click(function () {
+                    window.location.href = 'user_word.html?token='+token ;
+                })
+            }
+        }
+    }
+</script>
+</html>

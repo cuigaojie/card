@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>理赔</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/insurance.css"/> 
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+     .news{padding-bottom: 0;}      
+    </style>
+<body>
+<div class="content">
+	<div class="title_pay">
+    	<h3>三步理赔 简单快捷</h3>
+    </div>
+    <div class="flow_pay">   	
+    	<ul class="">
+    		<li><img src="img/bg22.png" alt="" /><p>报案</p></li>
+			<li><img src="img/jtright.png" alt="" /></li>
+    		<li><img src="img/fxa.png" alt="" /><p>定损</p></li>
+    		<li><img src="img/jtright.png" alt="" /></li>
+    		<li><img src="img/pldd.png" alt="" /><p>赔付<p></li>
+    		<li><img src="img/jtright.png" alt="" /></li>
+    		<li><img src="img/chrl.png" alt="" /><p>修车</p></li>
+    	</ul>
+    </div>
+	<div class="title_pay">
+    	<h3>现行赔付 理赔无忧</h3>
+    </div>
+    <div class="banner_pay">
+    	<img src="img/ger.png" alt="" />
+    </div>
+	<div class="phone_pay">
+		<div class="title_pay">
+	    	<h3>各大保险公司理赔报案电话</h3>
+	    </div>
+	    <ul class="pay">	    	
+	    </ul>
+	</div>
+</div>
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+	
+
+    var token = getUrl('token') ;
+
+    $(function(){
+        Fun().init();
+      	$(".flow_pay li:odd").attr('data_type', 'odd')
+      	$(".flow_pay li:even").attr('data_type', 'even')
+    
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+            this.ajax()
+            },
+            ajax:function(){
+            	$.ajax({
+            		type:"get",
+            		url: ulr_common+'mobile/Carsafe/carsafe',
+                    dataType:'json',
+                    data:{
+                        token: token
+                    },
+                    success:function(data){
+                    	$.each(data.body, function(i) {
+                    		$(".pay").append("<li><div><img src="+data.body[i].img+" alt='' /><p>"+data.body[i].Tel+"</p></div></li>")
+                    	});	
+                    }
+            	});
+            }
+        }
+    }
+</script>
+</html>

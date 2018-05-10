@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>公告详情</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/my.css"/>
+</head>
+<body>
+
+<!--content 开-->
+<div class="content">
+   <div class="not_ti">
+       <h3 class="not_title wrap hid"><!--哈哈哈哈--></h3>
+       <h4 class="not_time"><!--2017-01--></h4>
+   </div>
+    <pre class="not_p4 wrap"><!--哈哈哈哈哈哈哈--></pre>
+</div>
+<!--content 结-->
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script type="text/javascript">
+
+
+    var id = getUrl('id') ;
+
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax(); // 请求
+            },
+            // 请求
+            ajax:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/public/notice_detail',
+                    dataType:'json',
+                    data:{
+                        id :id
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            $('.not_title').text(data.body.title) ;
+                            $('.not_time').text(data.body.createdtime) ;
+                            $('.not_p4').text(data.body.info) ;
+                        }else{
+
+                        }
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错1') ;
+                        //alert('服务器不在状态');
+                    }
+                });
+            }
+        }
+    }
+</script>
+</html>

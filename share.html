@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>分享</title>
+
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/order.css"/>
+</head>
+<body>
+
+<!--content 开-->
+<div class="san_share">
+    <img class="san_big" src="img/bei_sb_2.jpg" alt=""/>
+    <div class="san_box">
+        <img class="san_1" src="img/logo.png" alt=""/>
+       <div class="san_one ">
+           <img class="san_2" src="img/ti_4.png" alt=""/>
+           <img class="san_3" src="img/code.jpg" alt=""/>
+           <img class="san_2" src="img/ti_5.png" alt=""/>
+       </div>
+        <img class="san_4"  src="img/san_1.png" alt=""/>
+    </div>
+</div>
+<!--content 结-->
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script type="text/javascript">
+    var token = getUrl('token') ;
+    var p_token = getUrl('p_token') ;
+
+    $(function(){
+        Fun().init();
+
+        //alert(p_token+'-------111111');
+
+    });
+
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.share_or();
+            },
+            // 判断是否是分享的页面
+            share_or:function(){
+
+                //alert(window.location.href+'页面链接');
+
+                if(p_token =='' || p_token == null || p_token == 'null'){
+                    //alert(p_token+'没有p_token----!!!!!');
+
+                    //return false
+                }else{
+                    //alert(p_token+'======有p_token');
+                    // return false
+                    window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9fd50496033dac6c&redirect_uri=http%3A%2F%2Fhuxin.yulengzhileng.com%2Findex.php%2FMobile%2FMobile%2Fget_openid&response_type=code&scope=snsapi_userinfo&state='+p_token+'#wechat_redirect';
+                }
+
+               /* setTimeout(function(){
+
+                },1000)*/
+
+            }
+        }
+    }
+</script>
+</html>

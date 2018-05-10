@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>推荐成功明细</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/my.css"/>
+    <link rel="stylesheet" href="css/insurance.css" />
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+        body,html{background-color: #f6f1ed;}
+    </style>
+</head>
+<body>
+<!--top 开-->
+<div class="tab_success">
+	<ul class="tab_add">
+		<li class="li_on"><img src="img/ass11.png" alt="" /><p>信用卡补贴</p></li>
+		<li><img src="img/ass2.png" alt="" /><p>车险补贴</p></li>
+	</ul>
+</div>
+<div class="">
+    <ul class="top_btn">
+        <li class="top_on " id="1"><p class="hid ">自己办卡</p></li>
+        <li class="two_one" id="2"><p class="hid">直系办卡</p></li>
+        <li class="two_one" id="3"><p class="hid">人脉办卡</p></li>
+    </ul>
+</div>
+<!--top 结-->
+<!--content 开-->
+<div class="content_2">
+    <!--亲身推荐列表 开-->
+    <ul class="one_list">
+      <!--  <li>
+            <div class="wrap">
+                <div class="one_le">
+                    <img src="img/header.png" alt=""/>
+                    <div class="one_name">
+                        <span class="hid">哈哈哈</span>
+                        <b class="hid">亲身推荐</b>
+                        <p class="hid">奖励金额：<i>￥500</i> </p>
+                    </div>
+                </div>
+                <p class="one_where">推荐成功</p>
+            </div>
+        </li>-->
+    </ul>
+    <!--亲身推荐列表 结-->
+    <!--二三级 推荐列表 开-->
+    <ul class="two_list">
+     <!--   <li class="two_list_li_on">
+            <div class="two_top wrap">
+                <div class="two_le">
+                    <img src="img/header.png" alt=""/>
+                    <div class="two_name">
+                        <span class="hid">哈哈哈</span>
+                        <b class="hid">2018.02.02</b>
+                    </div>
+                </div>
+               <div class="two_ri">
+                   <p class="two_where">推荐成功</p>
+                   <img src="img/jian_2.png" alt=""/>
+               </div>
+            </div>
+            <div class="two_bot">
+                <div class="wrap">
+                    <div class="tui_info">
+                        <p class="hid tui_p1">
+                            <b>推荐人：</b>
+                            <img src="img/header.png" alt=""/>
+                            <b>小飞机</b>
+                        </p>
+                        <p class="hid">微信号：123456789</p>
+                        <p class="hid">奖 金：<i>￥500</i> </p>
+                    </div>
+                    <p class="tui_where">人脉成功</p>
+                </div>
+            </div>
+        </li>-->
+      <!--  <li >
+            <div class="two_top wrap">
+                <div class="two_le">
+                    <img src="img/header.png" alt=""/>
+                    <div class="two_name">
+                        <span class="hid">哈哈哈</span>
+                        <b class="hid">微信号：123456789</b>
+                    </div>
+                </div>
+                <div class="two_ri">
+                    <p class="two_where">推荐成功</p>
+                    <img src="img/jian_3.png" alt=""/>
+                </div>
+            </div>
+            <div class=" two_bot">
+                <div class="wrap">
+                    <div class="tui_info">
+                        <p class="hid tui_p1">
+                            <b>推荐人：</b>
+                            <img src="img/header.png" alt=""/>
+                            <b>小飞机</b>
+                        </p>
+                        <p class="hid">微信号：123456789</p>
+                        <p class="hid">奖 金：<i>￥500</i> </p>
+                    </div>
+                    <p class="tui_where">人脉成功</p>
+                </div>
+            </div>
+        </li>-->
+    </ul>
+    <!--二三级 推荐列表 结-->
+</div>
+<!--content 结-->
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+    var token = getUrl('token') ;
+    var type = 1 ;
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function() {
+        return {
+            init: function () {
+                this.ajax();  // 请求
+                this.tab();  // 切换
+                this.jump()
+            },
+            // 请求
+            ajax: function () {
+                $.ajax({
+                    type: 'get',
+                    url: ulr_common + 'mobile/User/recommend_record',
+                    dataType: 'json',
+                    data: {
+                        token: token,
+                        type: type  //1直系团队，2人脉团队
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if (data.code == 200) {
+
+                            if($('.top_on').hasClass('two_one')){
+                                // 直系 人脉 列表 展示
+                                Fun().list_show_2(data.body);
+                               // alert(12)
+
+                            }else{
+                                // 亲身 列表 展示
+                                Fun().list_show_1(data.body);
+                               // alert(666)
+                            }
+                        } else {
+                            layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });
+                        }
+
+                    },
+                    error: function (errordata) {
+                        console.log('请求出错1') ;
+                       // alert('请求出错');
+                    }
+                });
+            },
+            // 亲身 列表 展示
+            list_show_1: function (data) {
+                $('.one_list').empty(); // 清空
+                $(data).each(function (i) {
+                    $('.one_list').append(' <li id="'+data[i].id+'"> ' +
+                    '<div class="wrap"> ' +
+                    '<div class="one_le"> ' +
+                    '<img src="'+data[i].bank_pic+'" alt=""/> ' +
+                    '<div class="one_name"> ' +
+                    '<span class="hid">'+data[i].bank_name+'</span> <b class="hid">'+data[i].signa+'</b> ' +
+                    '<p class="hid">奖励金额：<i>￥'+data[i].reward+'</i> </p> </div> ' +
+                    '</div> ' +
+                    '<p class="one_where">'+data[i].signb+'</p> </div> ' +
+                    '</li>');
+                });
+
+            },
+            // 直系 人脉 列表 展示
+            list_show_2: function (data) {
+                $('.two_list').empty(); // 清空
+                $(data).each(function (i) {
+                    $('.two_list').append('<li> <div class="two_top wrap"> ' +
+                    '<div class="two_le">' +
+                    '<img src="'+data[i].applied_user_info.header_pic+'" alt=""/> ' +
+                    '<div class="two_name"> ' +
+                    '<span class="hid">'+data[i].applied_user_info.name+'</span> ' +
+                    '<b class="hid">'+data[i].applied_user_info.time+'</b> </div> ' +
+                    '</div> ' +
+                    '<div class="two_ri">' +
+                    ' <p class="two_where">'+data[i].applied_user_info.sign+'</p> ' +
+                    '<img src="img/jian_3.png" alt=""/> </div> ' +
+                    '</div> ' +
+                    '<div class=" two_bot"> <div class="wrap"> ' +
+                    '<div class="tui_info"> ' +
+                    '<p class="hid tui_p1"> <b>推荐人：</b> ' +
+                    '<img src="'+data[i].apply_user_info.header_pic+'" alt=""/>' +
+                    ' <b>'+data[i].apply_user_info.nickname+'</b> </p> ' +
+                    '<p class="hid">微信号：'+data[i].apply_user_info.telephone+'</p>' +
+                    ' <p class="hid">奖 金：<i>￥'+data[i].apply_user_info.reward+'</i> </p> ' +
+                    '</div> ' +
+                    '<p class="tui_where">'+data[i].apply_user_info.sign+'</p> </div> </div> ' +
+                    '</li>');
+                });
+                // 默认第一个 下拉展示出来
+                $('.two_list li').eq(0).addClass('two_list_li_on');
+                $('.two_list li').eq(0).find('.two_ri img').attr('src','img/jian_2.png');
+                $('.two_list li').eq(0).siblings().removeClass('two_list_li_on');
+
+                $('.two_list li').click(function(){
+                    if($(this).hasClass('two_list_li_on')){
+                        $(this).removeClass('two_list_li_on');
+                        $(this).find('.two_ri img').attr('src','img/jian_3.png');
+                    }else{
+                        $(this).addClass('two_list_li_on');
+                        $(this).find('.two_ri img').attr('src','img/jian_2.png');
+                        $(this).siblings().removeClass('two_list_li_on');
+                    }
+                })
+
+            },
+
+            // 切换
+            tab: function () {
+                $('.top_btn li').click(function(){
+
+                    type = $(this).attr('id');
+
+                    if($(this).hasClass('top_on')){
+                        return false
+                    }else{
+                        $(this).addClass('top_on') ;
+                        $(this).siblings().removeClass('top_on') ;
+                        if($(this).hasClass('two_one')){
+                            $('.one_list').css('display','none');
+                            $('.two_list').css('display','block');
+                        }else{
+                            $('.one_list').css('display','block');
+                            $('.two_list').css('display','none');
+                        }
+                        //  调用 列表展示函数展示
+                        Fun().ajax();
+                    }
+                })
+            },
+              jump:function(){           	        		
+        		$(".tab_add li").eq(1).click(function(){
+        			window.location.href='safe_subsidy.html?token='+token;
+        		})
+            	
+            }
+        
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>卡神攻略</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/card.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+        body ,html{background-color: #f6f1ed;}
+    </style>
+</head>
+<body>
+<!--content 开-->
+<div class="content">
+    <!--banner 开-->
+    <div class="banner">
+       <!-- <img src="img/banner_1.jpg" alt=""/>-->
+    </div>
+    <!--banner 结-->
+    <!--办卡攻略 开-->
+    <div class="card_god">
+        <div class="god_ti">
+            <b></b>
+            <p>办卡攻略</p>
+            <b></b>
+        </div>
+        <ul class="god_list  wrap">
+           <!-- <li><p class="hid">#白户办卡攻略#</p></li>-->
+        </ul>
+    </div>
+    <!--办卡攻略 结-->
+    <!--新手须知 开-->
+    <div class="user_know">
+        <div class="god_ti">
+            <p>新手须知</p>
+            <img src="img/ic_4.jpg" alt=""/>
+        </div>
+        <ul class="know_list">
+           <!-- <li>
+                <div class="wrap">
+                    <img src="img/header.png" alt=""/>
+                    <div class="know_wo">
+                        <p class="hid know_p1">您需要办卡的条件</p>
+                        <p class=" know_p2">从银行的角度来讲，以卡办卡这种申卡形式是为了提高信用卡的申请效率，</p>
+                        <p class="hid know_p3">点击查看更多详情</p>
+                    </div>
+                </div>
+            </li>-->
+        </ul>
+    </div>
+    <!--新手须知 结-->
+</div>
+<!--content 结-->
+<!--bottom 开-->
+<div class="bottom">
+    <ul class="bot_list">
+        <li>
+            <img src="img/b_11.png" alt=""/>
+            <p>信用卡</p>
+        </li>
+        <li class="li_on">
+            <img src="img/b_2.png" alt=""/>
+            <p>分享攻略</p>
+        </li>
+           <li>
+            <img src="img/che_3.png" alt=""/>
+            <p>车险</p>
+        </li>
+
+        <li>
+            <img src="img/b_33.png" alt=""/>
+            <p>个人中心</p>
+        </li>
+    </ul>
+</div>
+<!--bottom 结-->
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token') ;
+
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax(); // 请求
+            },
+            // 请求
+            ajax:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/Strategy/card_stra',
+                    dataType:'json',
+                    data:{
+                        token: token
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            //顶部宣传图
+                            $('.banner').append(' <img src="'+data.body.header_pic+'" alt=""/>')
+                            // 办卡攻略
+                            Fun().god_list(data.body.card_strategy);
+                            // 新手须知
+                            Fun().know_list(data.body.new);
+                            // 跳转
+                            Fun().jump();
+
+                        }else{
+                            console.log('请求出错204') ;
+                            //alert('请求出错');
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错1') ;
+                        //alert('请求出错');
+                    }
+                });
+            },
+            // 办卡攻略
+            god_list:function(data){
+                $(data).each(function(i){
+                    $('.god_list').append('<li id="'+data[i].csid+'"><p class="hid">'+data[i].title+'</p></li>');
+                });
+            },
+            // 新手须知
+            know_list:function(data){
+
+                $(data).each(function(i){
+                    $('.know_list').append(' <li  id="'+data[i].csid+'"> <div class="wrap"> ' +
+                    '<img src="'+data[i].pic+'" alt=""/> ' +
+                    '<div class="know_wo">' +
+                    ' <p class="hid know_p1">'+data[i].title+'</p>' +
+                /*    ' <p class=" know_p2">'+data[i].info+'</p> ' +*/
+                    '<p class="hid know_p3">点击查看更多详情</p> ' +
+                    '</div> </div> </li>');
+                });
+            },
+            jump:function(){
+                // 办卡攻略
+                $('.god_list li').click(function(){
+                    var csid = $(this).attr('id');
+                    window.location.href  = 'card_god_details.html?token='+token+'&csid='+csid ;
+                });
+                // 新手须知
+                $('.know_list li').click(function(){
+                    var csid = $(this).attr('id');
+                    window.location.href  = 'card_god_details.html?token='+token+'&csid='+csid ;
+                });
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>我的订单</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/order.css"/>
+    <link rel="stylesheet" href="css/insurance.css" />
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+        body,html{background-color: #f6f1ed;}
+    </style>
+</head>
+<body>
+<!--top 开-->
+<ul class="tab_orderlist">
+	<li class="li_on"><img src="img/che@2x2.png" alt="" /><p>信用卡订单列表</p></li>
+	<li><img src="img/che@2x.png" alt="" /><p>车险订单列表</p></li>
+</ul>
+<div class="">
+    <ul class="top_btn">
+        <li class="top_on"><p class="hid">待审核</p></li>
+        <li><p class="hid ">无效</p></li>
+        <li><p class="hid">拒绝</p></li>
+        <li><p class="hid">核卡</p></li>
+        <li><p class="hid">首刷</p></li>
+
+    </ul>
+</div>
+<!--top 结-->
+<!--content 开-->
+<div class="content_2">
+    <ul class="order_list">
+       <!-- <li class="">
+           <div class="wrap">
+               <div class="status">
+                   <span>订单已完成</span>
+               </div>
+               <div class="order_info">
+                   <p class="ord_p1 hid">浦发银行信用卡浏览记录/自己</p>
+                   <p class="ord_p2 hid">申请人：熊*   (微信号：123456798)</p>
+                   <p class="ord_p2 hid">手机号：12345678912</p>
+                   <p class="ord_p2 hid">申浏览时间：2018-01-14  21:59:16</p>
+                   <p class=" ord_p2 ord_p3 hid">浏览时间：2018-01-14  21:59:16</p>
+               </div>
+           </div>
+        </li>-->
+    </ul>
+</div>
+<!--content 结-->
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token') ;
+    var type = 1;
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax();   // 列表请求
+                this.tab();   // 切换
+                this.jump()
+            },
+            // 列表请求
+            ajax:function(){
+                $.ajax({
+                    type:'get',
+                    url: ulr_common+'mobile/order/my_order',
+                    dataType:'json',
+                    data:{
+                        token: token ,
+                        type: type
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        if(data.code == 200){
+                            // 轮播展示
+                            Fun().show(data.body);
+
+
+                        }else{
+                            console.log('请求出错1') ;
+                            //alert('请求出错');
+                        }
+
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错2') ;
+                        //alert('请求出错');
+                    }
+                });
+            },
+            show: function (data) {
+                $('.order_list').empty(); // 清空数据
+                $(data).each(function (i) {
+                    $('.order_list').append(' <li class=""> ' +
+                    '<div class="wrap"> ' +
+                    '<div class="status"> <span>'+data[i].sign+'</span></div>' +
+                    '<div class="order_info">' +
+                    ' <p class="ord_p1 hid">'+data[i].bank_name+'</p>' +
+                    ' <p class="ord_p2 hid">申请人：'+data[i].name+'  (微信号：'+data[i].wx_no+')</p> ' +
+                    '<p class="ord_p2 hid">手机号：'+data[i].tel+'</p> ' +
+                    '<p class="ord_p2 hid">浏览时间'+data[i].check_time+'</p> ' +
+                    '<p class=" ord_p2 ord_p3 hid">'+data[i].sentence+'</p> ' +
+                    '</div> </div> </li>')
+                })
+            },
+            // 切换
+            tab: function () {
+                $('.top_btn li').click(function(){
+
+                    type = Number($(this).index())+1;
+
+                    if($(this).hasClass('top_on')){
+                        return false
+                    }else{
+                        $(this).addClass('top_on') ;
+                        $(this).siblings().removeClass('top_on') ;
+                        //  调用 列表展示函数展示
+                        Fun().ajax();
+                    }
+                })
+            },
+             jump:function(){
+            	$(".tab_orderlist li").eq(1).click(function(){
+            		window.location.href='safe_order.html?token='+token
+            	})
+            }
+        }
+    }
+</script>
+</html>

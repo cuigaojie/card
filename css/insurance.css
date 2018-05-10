@@ -1,0 +1,572 @@
+.fl{float: left;}
+.fr{float: right;}
+/*车险板块 ----首页*/
+.banner_safe img {
+  width: 100% ;
+  height: 4.6666667rem;
+}
+.tab_safe {
+  width: 100%;
+  background-color: #fff;
+}
+.tab_safe ul {
+  width: 8.04rem;
+  height: 2.32rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.tab_safe ul li {
+  float: left;
+  width: 4.01333333rem;
+  font-size: 0.28rem;
+  text-align: center ;
+}
+.tab_safe li img {
+  width: 1.06666667rem;
+  height: 1.06666667rem;
+  margin: 0.37333333rem auto 0.24rem;
+}
+.title_safe {
+  height: 0.77rem;
+  line-height: .77rem;
+  text-align: center;
+  background-color: #F3F3F3;
+  position: relative;
+}
+.title_safe h3 {
+  text-align: center;
+  font-size: 0.32rem;
+  width: 3.4rem;
+  color: #000;
+  background-color: #f6f1ed;
+  position: absolute;
+  left: 50%;
+  margin-left: -1.7rem;
+  line-height: 0.73333333rem;
+}
+.title_safe .line {
+  width: 4.2rem;
+  height: 0.04rem;
+  background: #999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: 0.02rem;
+  margin-left: -2.1rem;
+}
+.offer{
+	background-color:#fff;
+	padding: .15rem 0;
+	}
+.brand_safe dd img.card_icon2{
+		width: 0.38666666666666666rem;
+    height: 0.26666666666666666rem;
+    margin: 0.2rem auto;
+	}
+
+.offer h1{
+	color: #333;
+	font-size: .24rem;
+	margin: .26666667rem auto;
+	text-align: center;
+	}
+.offer h1 b{
+	color: #FFC000;
+	font-size: .24rem;
+	}
+.offer .ipt{
+	width: 7.56rem;
+	height:.6666667rem ;
+	line-height: .6666667rem;
+	margin: 0 auto;
+	border: 1px solid #FFC000;
+	border-radius:.16rem; 
+	position: relative;
+	}
+.offer .ipt .chepai{
+	font-size: .333333rem;
+	height:.6666667rem ;
+	line-height: .6666667rem;
+	float: left;
+	width: 1.48rem;
+	background: #FFC619;
+	background-size: 1.48rem .6666667rem;
+	color: #fff;
+	display: flex;
+  flex-direction: row;
+  justify-content: center;
+	}
+.offer .ipt .chepai img{
+		width: 0.26666666666666666rem;
+    height: 0.14666666666666667rem;
+    margin: 0.2rem 0.13333333333333333rem;}
+.offer .ipt .chepai p{
+	padding-left: .2rem;
+	}
+.offer .ipt input{
+		font-size: .2666667rem;
+		color: #999;
+		float: left;
+		height:.6666667rem ;
+		text-indent: .24rem;
+		width: 6.08rem;
+    border: none;
+		outline: none;
+	  border-radius: 16rem;
+	}
+.chepai_all{
+	position: absolute;
+	top: .6666667rem;
+	left: .4rem;
+	font-size: .28rem;
+	z-index: 9;display: none;
+	}
+	.chepai_all ul{
+		overflow: hidden;
+		background-color: #fff;
+		width: 1.78666rem;
+		box-sizing: border-box;
+
+		border-left: 1px solid #f2f2f2;
+	}
+	
+.chepai_all li{
+	width: 50%;
+	float: left;
+	height: .65rem;
+	line-height: .65rem;
+	box-sizing: border-box;
+	text-align: center;
+	border-bottom: 1px solid #f2f2f2;
+	border-right: 1px solid #f2f2f2;
+	font-size: .3466666rem;}
+	
+ .quick{
+	width: 8.32rem;
+	height: .84rem;
+	line-height: .84rem;
+	margin: .37333333rem auto .26666667rem;
+	text-align:center ;
+  font-size: .4rem;
+  color: #fff;
+  background: url(../img/baojia.png) no-repeat ;
+  background-size: 8.32rem .84rem;
+}
+.brand h3{
+	width: 3.5rem;
+	margin-left: -1.75rem;
+	}
+	.brand .title_safe .line{
+		height: .04rem;
+	}
+.brand_safe{ 
+	text-align: center;
+	background-color: #fff;
+	overflow: hidden;
+	box-sizing: border-box;
+	}
+.brand_safe dd{
+	width: 50%;
+	float: left;
+	font-size: .28rem;
+	border-bottom:1px solid #e4e4e4;
+	}
+.brand_safe img.fac_img{
+	width: 2.746666rem;
+	height: 1.266666rem;
+	margin: 0 auto}
+.brand_safe p{
+	font-size: .28rem;
+	color: #999;
+	margin-bottom: .14666666rem;}
+.brand_safe span.zigou{
+	color: #FFC000;
+	border: 1px solid #FFC000;
+	padding: .03rem .1rem;}
+.brand_safe h1{
+	color: #F05C5C;
+	margin: .2133333rem auto;}
+.brand_safe dd:nth-child(odd){
+	border-right: 1px solid #e4e4e4;
+	box-sizing: border-box;}
+.desc{
+	font-size: .28rem;
+	text-align: center;	
+	line-height:1.7;
+	padding-bottom: .266666rem;
+	overflow: hidden;
+	letter-spacing:.01rem;}
+.desc b{
+	color: #FFC000;
+	}
+/*车险板块 ----首页end*/
+/*车险板块 ---买车险送礼品*/
+
+.small_gift{
+  width: 100%;
+	padding-bottom: .36rem;
+	margin-bottom: .4rem;
+	box-shadow: 0 0 .426rem #ababab;
+	line-height: 1.5; 	}
+.small_gift img{
+	width: 100%;
+	/*height: 5.5866667rem;*/
+	}
+.small_gift h1{
+		color: #000;
+		font-size: .44rem;
+		padding-left: .36rem;
+		padding-top: .32rem;
+	}
+.small_gift p{
+		color: #999;
+		font-size: .3066666rem;
+		padding-left: .36rem;
+	}
+/*车险板块 ---买车险送礼品end*/
+/*车险板块 ---理赔*/
+.title_pay{
+	height: .933333rem;
+	line-height: .933333rem;
+	text-align: center;
+	font-size: .32rem;
+	overflow: hidden;
+}
+.title_pay h3{
+	  text-align: center;
+	  width: 4rem;
+	  color: #000;
+	  background-color: #fff;
+	  padding: 0 .226666666rem;
+	  margin: 0 auto;
+	  position: relative;
+ }
+.title_pay h3:before{
+	content: "";display: block;
+	width: .4rem;  
+	height:0.04rem;
+	/*background-color: #FFC000;*/
+	border-bottom: .04rem solid #FFC000;
+	position: absolute;
+	top: 50%;
+	left: 0;
+}
+.title_pay h3:after{
+	content: "";display: block;
+	width: .4rem; height:0rem;
+	border-bottom: .04rem solid #FFC000;
+	position: absolute;
+	top: 50%;
+	right: 0;
+}
+
+.flow_pay{
+	border-bottom: .090722222rem solid #F2F2F2;
+	overflow: hidden;
+}
+.flow_pay ul{
+	height:1.5rem;
+	margin: .1rem 1.12rem .32rem;
+	overflow: hidden;
+	padding-top: .3rem;
+	display: flex;
+	flex-direction: row;
+  justify-content: space-around;
+  
+}
+.flow_pay li[data_type='even']{
+	width: 1.3rem;
+	text-align: center;
+} 
+.flow_pay li[data_type='odd']{
+	margin: .2rem;
+	margin-top: .3rem;
+}
+.flow_pay li p{
+	height: .6rem;
+	line-height: .6rem;
+	font-size: .28rem;
+	color: #999;
+}  
+.flow_pay li[data_type='even'] img{
+	width: .906666rem;
+	height: .906666rem;
+	margin: 0 auto;	
+}
+
+.flow_pay li[data_type='odd'] img{
+	width: .1866666rem;
+	margin: 0 auto;
+}
+.banner_pay img{
+	width: 100%;
+	height: 5.3333333rem;
+	overflow: hidden;
+}
+.phone_pay .title_pay h3{
+	width: 5.3rem;
+}
+.phone_pay ul{
+	width: 100%;
+	overflow: hidden;
+}
+.phone_pay ul li{
+	width:33.33%;
+	float: left;
+	box-sizing: border-box;
+	overflow: hidden;
+	}
+.phone_pay ul li>div{
+	width: 2.68rem;
+	height: 2.2266666rem;
+	
+	color: #999;
+	border: 1px solid #f2f2f2;
+	margin: 0 auto .6rem;}
+.phone_pay ul li>div img{
+	width: 2.5866666666rem;
+	height: 1.1733333rem;
+	margin:.16rem auto;
+}
+.phone_pay ul li>div p{
+	border-top: 1px solid #f2f2f2;
+	width: 2.2rem;
+	height: .64rem;
+	line-height: .64rem;
+	text-align: center;
+	margin: 0 auto;
+	font-size: .28rem;
+}
+/*车险板块 ---理赔*/
+
+/*基本信息*/
+ .banner_info img{width: 100%;height: 4.69993rem;} 
+ .license{    display: flex;
+    align-items: center;
+    justify-content: center;}
+ .list{margin: 0 auto;width: 8.64rem;} 
+ .list .item{border-bottom: 1px solid #F2F2F2;height: 1.1066666rem;line-height: 1.1066666rem;width: 8.64rem;display: flex;align-items: center;
+ position: relative;}   
+ .list .item label{font-size: .34666636rem;float: left;} 
+ .item .chepai{font-size: .34666666rem;color: #ffc000;width: 1.133333rem;
+ height:.53333333rem;border: 1px solid #ffc000;border-radius: .12rem;display: flex;align-items: center;justify-content: center;
+ margin-left: .3rem;}
+ .item .chepai img{width: .26rem;}
+ .list .item input{font-size: .3066666rem;text-indent: .32rem;padding: .2rem;border: none;}
+ .list .item .chepai_all{top: .85rem;left: 2rem;}
+ .save{color: #999;font-size: .28rem;margin-left: .693rem;}
+ .person{color: #ffc000;width: 6.02666666rem;height:.8rem ;line-height:.8rem;
+ border: 1px solid #ffc000;border-radius: .12rem;
+ font-size: .346666rem;margin: 0 auto;text-align: center;}
+ .padtp_bt{padding: .5333333rem 0;}
+ .padtp23{padding-top: .293333rem;}
+ /*基本信息*/
+/*申请车险总监*/
+.apply{width: 8.5rem;border-radius: 0.24rem ;box-shadow:.066667rem .133333rem .24rem rgba(0,0,0,0.4);
+margin:  .56rem auto ;color:#333333;padding-bottom: .6rem; }
+.apply h1{font-size: .52rem;text-align: center;padding: .6rem 0 .53333rem;}
+.apply>p{font-size: .4133333rem;padding-left:1.0666667rem ;letter-spacing: 1px;height: .7rem;line-height: .7rem;}
+.apply .form p{font-size:.4133333rem ;width: 2.32rem;text-align-last:justify; text-indent:9px;}
+.apply .form>div{display: flex;align-items: center;padding-left:1.0666667rem ;height: 1rem;line-height: 1rem;}
+.apply .form input{font-size: .34rem;color: #999;outline: none;border: none;margin-bottom: .2rem;}
+.apply .form .inp{border-bottom: 1px solid #999;float: left;width: 4rem;display: flex;align-items: center;}
+.submit{width: 5.16rem;height: .84rem;font-size:.36rem;line-height:.84rem;text-align:center;color:#fff;margin: .5rem auto 0;background-image: url(../img/juk1.png);background-size:5.16rem .84rem;}
+/*申请车险总监 END*/
+/*车险START*/
+.tab_sub{display: flex;flex-direction: row;justify-content: space-around;background-color: #fff;
+border-bottom: 1px solid #ECECEC;height: 1.2rem;line-height:1.2rem;text-align: center;}
+.tab_sub li{box-sizing:border-box ;font-size: .4rem;}
+.tab_sub .li_active{border-bottom: 0.05333333333333334rem solid #ff9000;color: #ff9000;}
+.tab_sub li b{font-size: .28rem;}
+.tab_sub li span{display:inline-block;text-align: center;height:1.2rem ;margin: 0 auto;}
+
+
+.sub_list{width:8.8rem;overflow: hidden; margin: 0 auto;}
+.sub_list li{margin:.55rem auto;border-radius: .1333rem;box-shadow:0px .133333rem .32rem #ababab;    padding: .2rem 0;
+    background: #fff;}
+.sub_list li>div.items{display:flex;letter-spacing:1px;justify-content: flex-start;align-items:center;font-size: .34rem;
+background-color:#fff;height:.8rem ;}
+.sub_list li p b{font-size: .32rem;}
+.sub_list li img{width: .55rem;height:.55rem ;margin-left: .35rem;margin-right: .28rem;}
+.sub_list li>div.safe_factype{
+
+}
+
+/*车险END*/
+/*车险订单*/
+.tab_order{display: flex;flex-direction: row;justify-content: space-around;margin: .5rem auto 0;}
+.tab_order li{box-sizing: border-box;background-color: #ccc;color: #fff;}
+.tab_order p{width: 1.973333rem;height:.73333rem ;line-height:.73333rem ;text-align: center;
+font-size: .32rem;margin: 0 auto;}
+.tab_order .li_active{background-color: #FFC000;color: #fff;}
+/*车险订单 end*/
+/*怎么买车险*/
+.flow_buy ul{
+	margin:0 1.12rem .366rem ;
+}
+.flow_buy li[data_type='even'] img{
+	width: 1.04rem;
+	height: 1.04rem;
+	margin: 0 auto;	
+}
+.safe_type1{width: 9.24rem;margin: 0 auto;}
+.safe_type1 li{width: 9.24rem;margin-bottom: .4rem;border: 1px solid #f2f2f2;overflow: hidden;padding:.37rem 0 ;display: flex;align-items: center;justify-content: center;}
+.safe_img{width: 2.8rem;border-right: 1px solid #f2f2f2;margin-right: .28rem;display: flex;align-items: center;justify-content: center;}
+.safe_img img{width: 2.53rem;height: 1.93rem;}  
+.safe_desc h2{font-size: .32rem;height:.7rem;line-height:.7rem;}  
+.safe_desc h2 b{font-size: .28rem;color: #999;padding-left: .72rem;} 
+.safe_desc p{font-size: .28rem;color: #FFC000;height:.6rem;line-height: .6rem;width:6rem;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;} 
+.safe_desc p b{color: #999;font-size: .23rem;padding-left: .2rem;} 
+.safe_type2{width: 100%;overflow: hidden;}
+.safe_type2 li{width: 33.33%;box-sizing: border-box;float: left;margin-bottom: .4rem;}
+.safe_type2 li>div{border: 1px solid #f2f2f2;width: 2.68rem;margin: 0 auto;}
+.safe_type2 li p{border-top:1px solid #f2f2f2 ;color: #999;font-size: .28rem;text-align: center;height:.7rem ;line-height:.7rem ;width: 2.13333rem;margin:0 auto;}
+.safe_type2 img{width: 2.6rem;height: 1.93333rem;margin: 0 auto;}
+.consult{width: 5.6rem;height: 3.12rem;margin: 0 auto;border: .01333rem solid #f2f2f2;padding: .24rem;}
+.consult>div{overflow: hidden;}
+.consult img{float: left;width:1.893333rem ;height:2.813333rem ;margin-right:.53333rem ;}
+.consult h1{font-size: .44rem;margin-top: .4rem;margin-bottom: .4rem;}
+.consult p{width: 2.53333rem;height: .506666rem;background: url(../img/juk1.png);background-size:2.53333rem .5rem;color: #fff;font-size: .28rem;text-align: center;
+line-height: .5rem;margin-bottom: .28rem;border-radius: 8px;}
+.line_safe{width: 100%;height:.090722222rem ;background-color:#F2F2F2;margin-top: .50666rem;}
+.question li h1{padding:0 .46rem ;font-size: .28rem;}
+.question li p{padding:0 .46rem ;font-size: .28rem;color: #999;margin: .32rem 0;}
+.contair_safe{width:9.4rem;background-color: #fff;
+z-index: 99;margin: 0 auto ;position: relative;}
+.safe_info{width: 9.4rem;height: 2.313333rem;display: none;
+background-size: 9.4rem 2.313333rem;background-repeat: no-repeat;
+padding-left: .36rem;padding-top: .3rem;}
+
+.safe_type2 li[data_des='inf']{
+	margin-bottom:2rem;
+}
+.contair_safe .safe_info:nth-child(1){	
+	background-image: url(../img/jiaok1.png);
+  position: absolute;
+	top: -5.3rem;
+	left: 0;
+}
+.contair_safe .safe_info:nth-child(2){
+	background-image: url(../img/jiaok2.png);
+  position: absolute;
+	top: -5.3rem;
+	left: 0;
+}
+.contair_safe .safe_info:nth-child(3){
+	background-image: url(../img/jiaok3.png);
+  position: absolute;
+	top: -5.3rem;
+	left: 0;
+}
+.contair_safe .safe_info:nth-child(4){
+	background-image: url(../img/jiaok1.png);
+	margin-top: -0.6rem;
+}
+.contair_safe .safe_info:nth-child(5){
+	background-image: url(../img/jiaok2.png);
+	margin-top: -0.6rem;
+}
+.contair_safe .safe_info:nth-child(6){
+	background-image: url(../img/jiaok3.png);
+	margin-top: -0.6rem;
+}
+
+
+/*怎么买车险*/
+
+/*客服 start*/
+.service li{overflow: hidden;}
+.time{text-align: center;font-size: .28rem;color: #999;margin: .53333rem auto;width: 100%;}
+.chat .avatar{width: 1.5066667rem;height: 1.5066667rem;border-radius: 50%;overflow: hidden;float: left;margin-left: .32rem;}
+.chat .avatar img{width: 1.5066667rem;height: 1.5066667rem;margin: 0 auto;}
+.reply{float: left;margin-left: .2rem;}
+.reply .title_ser{color: #999;font-size: .3466666rem;height: .7rem;line-height: .7rem;}
+.reply .relay_info{background-color: #fff;width:6.66666667rem;border-radius:10px ;font-size:.34rem ;padding: .2rem;}
+/*客服 end*/
+/*推荐成功明细start*/
+.tab_add{
+	   display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #fff;
+    padding: .45rem 0;
+}
+.top_btn{background-color: #fff;}
+.tab_success li{
+	box-sizing: border-box;
+	text-align: center;
+	font-size: .346666rem;
+	color: #000;
+}
+.tab_success li img{
+	width:1.8rem;height:1.6rem ;
+	margin: 0 auto;
+}
+.tab_success li p{font-size: .346666rem;text-align: center;}
+/*推荐成功明细end*/
+/*我的订单 start*/
+.tab_orderlist{
+	  display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #fff;
+    padding: .94rem 0 .45rem;
+    border-bottom: .146666rem solid #f2f2f2;
+}
+.tab_orderlist li p{
+	font-size: .4rem;text-align: center;
+	margin: .2rem auto;
+}
+.tab_orderlist img{
+	width: 1.933333rem;height:1.4rem ;margin: 0 auto;
+}
+/*我的订单 end*/
+
+.banner_order img{width: 5.5rem;height:3.66666667rem ;margin: 0 auto;}
+
+dl.safe_fac{width:9.53333rem;box-shadow: 0 0 0.133333rem #ababab;margin:0 auto .3rem;height: 3rem;padding-bottom: .1rem;}
+dt.fac_logo{width:3.2rem; height:3rem;display: flex;align-items: center;}
+.list2 .safe_fac .fac_logo img{float: left; width: 3rem;    height: 1.266667rem;}
+.list2 .safe_factype .safe_fac img{margin: 0}
+dd.fac_order{font-size:.34rem;width:6.3rem;overflow: hidden;display: flex;align-items: center;margin-top:.1rem;  padding-bottom:.33rem;}
+.bd{border-bottom:1px solid #ababab;}
+.order_copy{ width: 1.6rem;height: .9rem;background-color: #dfdfdf;color: #fff;-webkit-border-radius: 8px;-moz-border-radius: 8px;
+	border-radius: 8px;padding: .08rem .1rem;text-align: center;font-size: .28rem;}
+.safe_factype .dl_active{box-shadow: 0 0 0.133333rem #ffc000;}
+.order_num{color: #999;font-size:.24rem;}
+.name_safe{display: flex;align-items: center;height:.8rem;width:4.2rem;}
+.name_safe img{margin-right: .2rem;width:.4rem}
+.downmore{display: flex;align-items:center;justify-content: center;font-size:.3rem;color:#585858;
+	margin-top:.2rem;}
+.sub_list li .downmore img{width:.3333rem;
+	height:.226667rem;}
+.safe_factype{height:3.3rem;overflow: hidden;
+	padding-top:.2rem;}
+.dl_active .dd_active .order_copy{background-color: #ffc000;}
+.none{
+	font-size:.4rem;
+	height:1rem;
+	line-height:1rem;
+	text-align: center;}
+.need_topay{font-size:.413333rem;margin:0 .4rem 0 .6rem;}
+.pay_money{color: #FF0E0E;font-size:.50666rem;}
+.to_pay{font-size:.39rem;background:#FFC000;color: #fff;float: right;width: 2.8rem;
+	height:.8rem;line-height:.8rem;text-align: center;display: block;-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;border-radius: 6px;margin-left:2.5rem;    position: absolute;
+	top: .25rem;
+	right: .4rem;}
+.vertical{display: flex;align-items: center;}
+.erweicode{width:6.14rem;height:5.44rem; position: fixed ;top:50%;margin-left:-3.07rem;left:50%;margin-top:-2.72rem;background: #fff;
+	border-radius: 25px;display: none;z-index:99;}
+.erweicode h2{font-size:.44rem;height:1rem;line-height:1rem;text-align: center}
+.erweicode p{font-size:.36rem;height:1rem;line-height:1rem;text-align: center}
+.mask{position: fixed;bottom: 0;left: 0;top: 0;background-color: rgba(0, 0, 0, 0.4);
+	height: 100%;width: 100%;z-index: 20;display: none;z-index: 9}
+.list2 .safe_factype .img_erwei{  display: flex;flex-direction: row;justify-content: space-around;
+	margin:.4rem auto;}
+.list2 .safe_factype .safe_fac .erwei{width:2.21rem;height: 2.21rem;}
+.list2 .safe_factype .zhiwen{width:2.32rem;height: 2.32rem;}
+.tab_orderlist .li_on p,.tab_add .li_on p{
+	color:#ffc000;}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>提现</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/my_wallet.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+</head>
+<body>
+
+<!--content 开-->
+<div class="content">
+    <div class="wal_inp">
+        <p>提现金额：</p>
+        <input class="ti_money" type="number" placeholder="请输入您的提现金额"/>
+    </div>
+    <div class="wal_word wrap">
+        <p>注意事项：</p>
+        <p>提现一般为每个月的最后五个工作日，每个月最后五天提现上月度的提现业绩</p>
+    </div>
+    <!--按钮-->
+    <div class="wal_btn wal_btn_2">提现</div>
+</div>
+<!--content 结-->
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token');
+
+    $(function(){
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.btn_click(); // 提现请求
+
+            },
+            // 提现请求
+            btn_click:function(){
+                $('.wal_btn').click(function(){
+                    var  tx_price  = Number( $('.ti_money').val().replace(/\s/g, ""));
+                    //console.log(tx_price) ;
+                    if(tx_price == '' || tx_price <= 0){
+                        layer.open({
+                            content: '请输有效的提现金额',skin: 'msg',time:1.5 //2秒后自动关闭
+                        });
+                    }else{
+                        $.ajax({
+                            type:'post',
+                            url: ulr_common+'Mobile/User/apply_money',
+                            dataType:'json',
+                            data:{
+                                token: token ,
+                                tx_price: tx_price
+                            },
+                            success:function (data) {
+                                console.log(data);
+                                if(data.code == 200){
+                                    layer.open({
+                                        content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                                    });
+
+                                    var obj = {
+                                        total_price : data.body.total_price ,
+                                        use_price : data.body.use_price ,
+                                        tx_price : data.body.tx_price
+                                    } ;
+                                    sessionStorage.setItem('obj_num',JSON.stringify(obj)) ; //对象 模式
+                                     /* setTimeout(function(){
+                                         window.location.href  = 'my_wallet.html?token='+token ;
+                                     },1800)*/
+
+                                }else{
+                                    layer.open({
+                                        content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                                    });
+                                  /*  setTimeout(function(){
+                                        //去添加 支付宝号
+                                        window.location.href  = 'bound_pay.html?token='+token ;
+                                    },1800)*/
+                                }
+
+                            },
+                            error:function (errordata) {
+                                console.log('请求出错1') ;
+                                //alert('服务器打盹了，请刷新');
+                            }
+                        });
+                    }
+
+                })
+
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>排行榜</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/my.css"/>
+    <link rel="stylesheet" href="layerMobile/need/layer.css"/>
+    <style>
+        body,html{background-color: #f6f1ed;}
+    </style>
+</head>
+<body>
+<!--top 开-->
+<div class="top">
+    <ul class="top_btn">
+        <li id="1" class="top_on"><p class="hid ">推广粉丝排行</p></li>
+        <li id="2"><p class="hid">推广收入排行</p></li>
+    </ul>
+</div>
+<!--top 结-->
+<!--content 开-->
+<div class="content_2">
+    <!--标题 开-->
+    <div class="rank_title">
+       <div class="wrap">
+           <p class="hid">排行</p>
+           <p class="hid">头像</p>
+           <p class="hid">昵称</p>
+           <p class="hid">工号</p>
+           <p class="hid num_rank">推广数量</p>
+       </div>
+    </div>
+    <!--标题 结-->
+    <!--列表 开-->
+    <div class="rank_box">
+        <ul class="rank_list wrap">
+        <!--    <li>
+                <p class="rank_p1 hid">
+                    <span>1</span>
+                </p>
+                <p class=" hid"><img src="img/header.png" alt=""/></p>
+                <p class=" hid">哈哈哈</p>
+                <p class=" hid">12345678</p>
+                <p class=" hid">50</p>
+            </li>-->
+        </ul>
+    </div>
+    <!--列表 结-->
+</div>
+<!--content 结-->
+
+</body>
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token') ;
+    var type = 1 ;
+    $(function(){
+
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax(); //请求
+                this.tab(); // 切换
+            },
+            //请求
+            ajax:function(){
+                $.ajax({
+                    type:"get",
+                    url: ulr_common+'mobile/user/rank',
+                    dataType:"json",
+                    data:{
+                        token: token ,
+                        type: type
+                    },
+                    success:function (data) {
+                        console.log(data)
+                        // 列表展示
+                        Fun().show(data.body);
+                    },
+                    error:function(data){
+                        layer.open({
+                            content: '请求出错',skin: 'msg',time: 1.5 //2秒后自动关闭
+                        });
+                    }
+                });
+            },
+            // 列表展示
+            show: function (data) {
+                $('.rank_list').empty(); // 清空之前的数据
+                $(data).each(function(i){
+                    $('.rank_list').append('<li id="'+data[i].userid+'"> ' +
+                    '<p class="rank_p1 hid"> <span>'+data[i].rank+'</span> </p> ' +
+                    '<p class=" hid"><img src="'+data[i].header_pic+'" alt=""/></p> ' +
+                    '<p class=" hid">'+data[i].nickname+'</p>' +
+                    ' <p class=" hid">'+data[i].userid+'</p>' +
+                    ' <p class=" hid">'+data[i].num+'</p> ' +
+                    '</li>');
+                });
+            },
+            // 切换
+            tab: function () {
+                $('.top_btn li').click(function(){
+
+                    type = $(this).attr('id');
+
+                    if(type == 2){
+                        $('.num_rank').text('收入（元）')
+                    }else if(type == 1){
+                        $('.num_rank').text('推广数量')
+                    }
+
+
+
+                    if($(this).hasClass('top_on')){
+                        return false
+                    }else{
+                        $(this).addClass('top_on') ;
+                        $(this).siblings().removeClass('top_on') ;
+                        //  调用 列表展示函数展示
+                        Fun().ajax();
+                    }
+                })
+            }
+
+        }
+    }
+</script>
+</html>

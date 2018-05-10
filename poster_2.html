@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>我的海报</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/card.css"/>
+</head>
+<body>
+<!--content 开-->
+<div class="content">
+    <!--介绍海报-->
+    <div class="plat_pic">
+        <img src="img/big_5.jpg" alt=""/>
+    </div>
+    <div class="plat_info wrap">
+        <div class="plat_le">
+            <p>1、网申信用卡最高可批10万</p>
+            <p>2、8家商业银行，秒批5分钟出额度</p>
+            <p>3、办卡成功还能赚现金</p>
+            <p>4、买车险最高平台补贴50%现金</p>
+            <p>5、佣金秒结算，立马赚不停</p>
+        </div>
+    </div>
+    <div class="user_info wrap">
+       <div class="user_le">
+           <div class="header">
+               <!--<img src="img/header.png" alt=""/>-->
+           </div>
+           <div class="user_wen">
+               <p class="hid  sb_1">微信昵称：<b><!--小苹果--></b></p>
+               <p class="hid sb_2">微信号：<b><!--13467895--></b></p>
+               <!--<p class="hid sb_3">手机号：<b>&lt;!&ndash;13467895&ndash;&gt;</b></p>
+               <p class="hid sb_4">推荐人：<b>&lt;!&ndash;13467895&ndash;&gt;</b></p>-->
+               <p class="hid sb_5">专属工号：<b><!--13467895--></b></p>
+               <p class="btn_sb">修改资料</p>
+           </div>
+       </div>
+        <div class="ma_sb">
+            <!--<img class="ma_sb_1" src="img/ma_2.jpg" alt=""/>-->
+            <img class="ma_sb_2"  src="img/ti_3.jpg" alt=""/>
+        </div>
+    </div>
+</div>
+<!--content 结-->
+</body>
+
+<script src="js/jquery1.9.1.js"></script>
+<script src="js/common.js"></script>
+<!--微信JS-SDK-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script src="js/wx_share.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="layerMobile/layer.js"></script>
+<script type="text/javascript">
+
+    var token = getUrl('token') ;
+    var bankid = getUrl('bankid') ;
+    var diff = getUrl('diff') ; //1首页进来时传，2从卡种
+    //var platform = getUrl('platform') ; //1首页进来时传，2从卡种
+    var atid ='' ; //推荐信息id
+
+    $(function(){
+
+        Fun().init();
+    });
+
+    var Fun = function(){
+        return{
+            init:function(){
+                this.ajax(); //请求
+                this.jump();   // 跳转
+                //this.copy();  // 复制
+            },
+            //请求
+            ajax:function(){
+                $.ajax({
+                    type:'post',
+                    url: ulr_common+'mobile/Bank/apply_card',
+                    dataType:'json',
+                    data:{
+                        token: token ,
+                        bankid: bankid ,
+                        diff: diff   // 首页1  分类2
+
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        atid =  data.body.atid ; // 推荐信息id
+                        if(data.code == 200){
+                            var judge = data.body.judge  ;
+                            if(judge == 'false'){
+                                //console.log(judge+'---')
+                                window.location.href  = 'recommend_input.html?token='+token+'&bankid='+bankid+'&diff='+diff ;
+                            }else  if(judge == 'true'){
+                                $('.sb_1 b').text(data.body.nickname) ; // 昵称
+                                $('.sb_2 b').text(data.body.wx_no) ;// 微信号
+                               // $('.sb_3 b').text(data.body.tel) ;// 手机号
+                               // $('.sb_4 b').text(data.body.true_name) ;//推荐人
+                                $('.sb_5 b').text(data.body.work_no) ;// 工号
+
+                                $('.header').prepend(' <img src="'+data.body.header_pic+'" alt=""/>') ; //头像
+                                $('.ma_sb').prepend(' <img class="ma_sb_1" src="'+data.body.exten_imgid+'" alt=""/>') ; //二维码
+                            }
+
+
+
+
+                        }else{
+                            console.log( data.result) ;
+                           /* layer.open({
+                                content: data.result,skin: 'msg',time:1.5 //2秒后自动关闭
+                            });*/
+                        }
+                    },
+                    error:function (errordata) {
+                        console.log('请求出错') ;
+                        //alert('请求出错');
+                    }
+                });
+            },
+            // 跳转
+            jump:function(){
+                $('.btn_sb ').click(function(){
+                    window.location.href = 'recommend_input.html?token='+ token +'&where=amend'+'&atid='+atid+'&bankid='+ bankid+'&diff='+diff ;
+                })
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,559 @@
+@charset "UTF-8";
+/*信用卡 卡种 页面*/
+/*列表*/
+.cla_list li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid #f6f1ed;
+  padding: 0.4rem 0;
+}
+.cla_le img {
+  width: 2.2666666666666666rem;
+  height: 2.533333333333333rem;
+  margin-left: 0.4rem;
+}
+.cla_ri {
+  width: 6.4rem;
+  margin-right: 0.4rem;
+}
+.cla_p1 {
+  font-size: 0.4rem;
+  color: #0e2332;
+  line-height: 0.6rem;
+}
+.cla_p2 {
+  font-size: 0.32rem;
+  color: #858686;
+  line-height: 0.4rem;
+  height: 0.8rem;
+  text-overflow: ellipsis;
+  margin-top: 0.06666666666666667rem;
+  display: -webkit-box;
+  /** 对象作为伸缩盒子模型显示 **/
+
+  -webkit-box-orient: vertical;
+  /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+
+  -webkit-line-clamp: 2;
+  /** 显示的行数 **/
+
+  overflow: hidden;
+}
+.cla_p3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0.2rem;
+}
+.cla_time {
+  font-size: 0.32rem;
+  color: #0e2332;
+  line-height: 0.4666666666666667rem;
+}
+.cla_money {
+  display: flex;
+  flex-direction: row;
+}
+.cla_money b {
+  font-size: 0.24rem;
+  color: #fff;
+  background-color: #f81919;
+  height: 0.4rem;
+  border-radius: 0.13333333333333333rem;
+  padding: 0 0.2rem;
+  line-height: 0.4rem;
+}
+.cla_money img {
+  width: 0.25333333333333335rem;
+  height: 0.16rem;
+  margin: 0.12rem;
+}
+.cla_btn {
+  display: block;
+  width: 2.2666666666666666rem;
+  height: 0.64rem;
+  font-size: 0.32rem;
+  color: #fff;
+  text-align: center;
+  line-height: 0.64rem;
+  border-radius: 0.13333333333333333rem;
+  background-color: #ff9000;
+  margin-top: 0.13333333333333333rem;
+}
+/*申请办卡 页面*/
+.run_ti {
+  font-size: 0.48rem;
+  color: #222;
+  text-align: center;
+  margin-top: 1.0666666666666667rem;
+}
+.inp_box {
+  margin-top: 0.4rem;
+}
+.inp_item {
+  height: 1.3333333333333333rem;
+  box-sizing: border-box;
+  border-bottom: 2px solid #f6f1ed;
+}
+.inp_item .wrap {
+  display: flex;
+  flex-direction: row;
+}
+.inp_item p {
+  font-size: 0.4rem;
+  color: #222;
+  line-height: 1.3333333333333333rem;
+  min-width: 2rem;
+}
+.inp_item input {
+  width: 5.066666666666666rem;
+  background-color: transparent;
+  border: none;
+  font-size: 0.4rem;
+  color: #222;
+}
+.fa_code {
+  font-size: 0.4rem;
+  color: #fff;
+  background-color: #ff9000;
+  width: 2rem;
+  height: 0.8rem;
+  border-radius: 0.16rem;
+  text-align: center;
+  line-height: 0.8rem;
+  margin-top: 0.26666666666666666rem;
+}
+.fa_code_on {
+  background-color: #f6f1ed;
+  color: #666;
+}
+/*注意事项*/
+.run_word {
+  width: 8.933333333333334rem;
+  margin: auto;
+}
+.run_p1 {
+  font-size: 0.4rem;
+  color: #222;
+  line-height: 1.0666666666666667rem;
+}
+.run_p2 {
+  font-size: 0.32rem;
+  color: #666;
+  line-height: 0.5333333333333333rem;
+}
+.run_word_2 {
+  background-color: #fff;
+  margin-top: 0.26666666666666666rem;
+}
+.run_word_2 p {
+  color: #666;
+}
+.run_word_2 .run_p2 {
+  width: 8rem;
+  margin: auto;
+  padding-bottom: 0.4rem;
+}
+.run_sb {
+  width: 0.6666666666666666rem;
+  height: 0.6666666666666666rem;
+  margin-left: 0.5333333333333333rem;
+}
+/*同意*/
+.agree {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 0.4rem;
+}
+.agree img {
+  width: 0.4remn;
+  height: 0.4rem;
+  margin-top: 0.26666666666666666rem;
+}
+.agree p {
+  font-size: 0.32rem;
+  color: #666666;
+  text-align: center;
+  line-height: 0.4666666666666667rem;
+}
+.agree p i {
+  color: #ff9000;
+  display: block;
+}
+.run_btn {
+  width: 6.666666666666667rem;
+  height: 1.3066666666666666rem;
+  background-color: #ff9000;
+  font-size: 0.48rem;
+  color: #fff;
+  text-align: center;
+  line-height: 1.3066666666666666rem;
+  border-radius: 0.13333333333333333rem;
+  margin: 0.4rem auto;
+}
+.run_btn_2 {
+  background-color: #fff;
+  padding: 0.17333333333333334rem 0;
+  margin-top: 0.26666666666666666rem;
+}
+.run_btn_2 p {
+  width: 5.333333333333333rem;
+  height: 1rem;
+  font-size: 0.4rem;
+  color: #f39800;
+  text-align: center;
+  line-height: 1rem;
+  border-radius: 0.2rem;
+  margin: auto;
+  border: 2px solid #f39800;
+}
+/*进度查询 页面*/
+.plan_big img {
+  width: 100%;
+}
+.plan_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.plan_list li {
+  width: 2.6666666666666665rem;
+  margin-left: 0.5rem;
+  margin-top: 0.6666666666666666rem;
+  background-color: #f6f1ed;
+  padding: 0.26666666666666666rem 0;
+}
+.plan_list img {
+  width: 1.6666666666666667rem;
+  height: 1.6666666666666667rem;
+  margin: auto;
+  border-radius: 100%;
+  border: 2px solid #dcdcdc;
+  box-sizing: border-box;
+}
+.plan_list p {
+  font-size: 0.4rem;
+  color: #222;
+  line-height: 0.7333333333333333rem;
+  text-align: center;
+}
+.plan_p {
+  font-size: 0.4rem;
+  color: #222;
+  text-align: center;
+  line-height: 0.5333333333333333rem;
+}
+.plan_p:first-child {
+  margin-top: 0.26666666666666666rem;
+}
+/*推介页面海报页面*/
+/*连接*/
+.rec_ti {
+  display: flex;
+  flex-direction: row;
+  height: 1.0666666666666667rem;
+}
+.rec_ti span {
+  width: 0.08rem;
+  height: 0.4rem;
+  background-color: #ab0410;
+  margin: 0.3333333333333333rem 0;
+}
+.rec_ti p {
+  font-size: 0.4rem;
+  color: #222;
+  line-height: 1.0666666666666667rem;
+  margin-left: 0.2rem;
+}
+.rec_inp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.4rem;
+  color: #222;
+  line-height: 0.7733333333333333rem;
+  height: 0.7733333333333333rem;
+}
+.rec_inp input {
+  width: 7.666666666666667rem;
+  background-color: #e5e5e5;
+  border: none;
+  font-size: 0.4rem;
+  color: #222;
+}
+.rec_inp span {
+  width: 1.3333333333333333rem;
+  background-color: #e5e5e5;
+  text-align: center;
+}
+.rec_p1 {
+  font-size: 0.32rem;
+  color: #222;
+  text-align: center;
+  line-height: 1.1333333333333333rem;
+}
+/*二维码*/
+.rec_bei img {
+  width: 100%;
+  height: 18.106666666666666rem;
+}
+.rec_ma {
+  position: relative;
+}
+.rec_info_box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+.rec_info {
+  width: 8rem;
+  height: 11.466666666666667rem;
+  background-color: #df1923;
+  margin: 5.533333333333333rem auto 0;
+}
+.rec_info img {
+  width: 6.066666666666666rem;
+  height: 6.066666666666666rem;
+  margin: auto;
+  padding-top: 0.6rem;
+}
+.rec_wen {
+  width: 6rem;
+  height: 2.066666666666667rem;
+  background-color: #ff9000;
+  border-radius: 0.4rem;
+  margin: 0.26666666666666666rem auto;
+}
+.rec_wen_2 {
+  width: 6rem;
+  height: 0.6666666666666666rem;
+  background-color: #ff9000;
+  border-radius: 0.2rem;
+  margin: auto;
+}
+.rec_wen_2 p {
+  font-size: 0.4rem;
+  color: #fff;
+  line-height: 0.6666666666666666rem;
+  text-align: center;
+}
+.rec_p2 {
+  font-size: 0.32rem;
+  color: #fff;
+  line-height: 0.6666666666666666rem;
+  width: 4.8rem;
+  margin: auto;
+}
+.rec_p3 {
+  font-size: 0.32rem;
+  color: #fff;
+  line-height: 0.6666666666666666rem;
+  text-align: center;
+}
+.hid_or {
+  display: none;
+}
+/*平台邀请 海报 页面*/
+.plat_pic img {
+  width: 100%;
+}
+.plat_p1 {
+  font-size: 0.4rem;
+  color: #a81f24;
+  margin-top: 1.4666666666666666rem;
+}
+.plat_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0.2rem;
+}
+.plat_le p {
+  font-size: 0.3466666666666667rem;
+  color: #222;
+  line-height: 0.6rem;
+  max-height: 999px;
+}
+.plat_ma {
+  width: 2.6133333333333333rem;
+  height: 2.6133333333333333rem;
+  border: 0.10666666666666667rem solid #b5b5b5;
+}
+.plat_ri img:nth-child(2) {
+  width: 2.8266666666666667rem;
+  height: 0.4666666666666667rem;
+}
+.user_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+}
+.user_le {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5333333333333333rem;
+}
+.header {
+  width: 2.3333333333333335rem;
+  height: 2.3333333333333335rem;
+}
+.header img {
+  width: 2.3333333333333335rem;
+  height: 2.3333333333333335rem;
+  border: 2px solid #aaa;
+  box-sizing: border-box;
+}
+.user_wen {
+  margin-left: 0.4rem;
+  width: 3.6rem;
+}
+.user_wen p {
+  font-size: 0.26666666666666666rem;
+  color: #222;
+  line-height: 0.4rem;
+}
+.user_wen .btn_sb {
+  width: 2.1333333333333333rem;
+  height: 0.4rem;
+  background-color: #ff9000;
+  border-radius: 0.4rem;
+  font-size: 0.26666666666666666rem;
+  color: #fff;
+  text-align: center;
+  line-height: 0.4rem;
+  margin-left: 0.2rem;
+}
+.user_wen img {
+  width: 4rem;
+  height: 0.4666666666666667rem;
+}
+.ma_sb_1 {
+  width: 2.533333333333333rem;
+  height: 2.533333333333333rem;
+}
+.ma_sb_2 {
+  width: 2.533333333333333rem;
+  height: 0.6266666666666667rem;
+}
+/*卡神攻略 页面*/
+.card_god {
+  background-color: #fff;
+}
+.god_ti {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  line-height: 1.3333333333333333rem;
+}
+.god_ti p {
+  font-size: 0.48rem;
+  color: #222;
+}
+.god_ti b {
+  display: block;
+  width: 0.9333333333333333rem;
+  background-color: #ededed;
+  height: 2px;
+  margin: 0.6533333333333333rem 0.2rem;
+}
+.god_ti img {
+  width: 0.4rem;
+  height: 0.4rem;
+  margin: 0.4666666666666667rem 0.26666666666666666rem;
+}
+.god_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-bottom: 0.4rem;
+}
+.god_list li {
+  width: 50%;
+  border-bottom: 2px solid #ededed;
+  box-sizing: border-box;
+  height: 1.2666666666666666rem;
+}
+.god_list li:nth-of-type(odd) p {
+  border-right: 1px solid #ededed;
+}
+/*奇数行 */
+.god_list p {
+  font-size: 0.4rem;
+  color: #222;
+  width: 3.7333333333333334rem;
+  line-height: 0.4666666666666667rem;
+  margin: 0.4rem auto;
+}
+/*新手须知*/
+.user_know {
+  background-color: #fff;
+  margin-top: 0.4rem;
+}
+.know_list li {
+  padding: 0.4rem 0;
+  border-top: 2px solid #ededed;
+}
+.know_list li .wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.know_list img {
+  width: 2.533333333333333rem;
+  height: 2.533333333333333rem;
+}
+.know_wo {
+  width: 6.4rem;
+  height: 2.533333333333333rem;
+  overflow: hidden;
+}
+.know_p1 {
+  font-size: 0.4rem;
+  color: #222;
+  line-height: 0.6rem;
+}
+.know_p2,
+.know_p3 {
+  font-size: 0.32rem;
+  color: #999;
+}
+.know_p2 {
+  line-height: 0.4666666666666667rem;
+  height: 1.4rem;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /** 对象作为伸缩盒子模型显示 **/
+
+  -webkit-box-orient: vertical;
+  /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+
+  -webkit-line-clamp: 3;
+  /** 显示的行数 **/
+
+  overflow: hidden;
+  /** 隐藏超出的内容 **/
+}
+/*办卡攻略 详情页*/
+.word_box {
+  /*font-size: 30/75rem;*/
+  margin: 0.4rem;
+  max-height: 999999px;
+}
+.word_pic img {
+  width: 100%;
+}
+.word_ti {
+  font-size: 0.48rem;
+  color: #222;
+  line-height: 1.3333333333333333rem;
+}
+.word_wen {
+  font-size: 0.4rem;
+  color: #666;
+  line-height: 0.7333333333333333rem;
+}
